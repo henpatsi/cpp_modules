@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 10:01:45 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/03/21 09:25:38 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/03/21 09:49:40 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "Contact.hpp"
 
 # define CONTACT_COUNT 8
+# define COLUMN_WIDTH 10
 
 class PhoneBook
 {
