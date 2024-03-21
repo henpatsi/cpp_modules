@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 10:01:45 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/03/21 09:49:40 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/03/21 11:12:03 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <string>
 # include <iostream>
+# include <iomanip>
 # include <cctype>
 
 # include "Contact.hpp"

@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 10:01:47 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/03/21 10:29:03 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/03/21 12:03:02 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,11 +126,12 @@ bool	PhoneBook::input_contact()
 void	format_search_output(std::string str)
 {
 	if (str.length() < COLUMN_WIDTH)
+	{
+		std::cout << std::setw(10);
 		std::cout << str;
+	}
 	else
 		std::cout << str.substr(0, 9) << ".";
-	for (size_t i = str.length(); i < COLUMN_WIDTH; i++)
-		std::cout << " ";
 }
 
 void	print_contacts(Contact contacts[])
