@@ -6,12 +6,12 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 19:32:06 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/03/19 14:50:20 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/03/20 11:38:05 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <algorithm>
+#include <string>
 #include <cctype>
 
 bool	trim_str(std::string &str)
@@ -28,6 +28,12 @@ bool	trim_str(std::string &str)
 	return (true);
 }
 
+void	str_toupper(std::string &str)
+{
+	for (size_t i = 0; i < str.length(); i++)
+		str[i] = toupper(str[i]);
+}
+
 int main(int argc, char *argv[])
 {
 	bool	first;
@@ -42,7 +48,7 @@ int main(int argc, char *argv[])
 			std::string str(argv[i]);
 			if (!trim_str(str))
 				continue ;
-			transform(str.begin(), str.end(), str.begin(), toupper);
+			str_toupper(str);
 			if (!first)
 				std::cout << " ";
 			else
