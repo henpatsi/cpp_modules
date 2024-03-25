@@ -33,7 +33,7 @@ bool	input_is_num(std::string str)
 		return (false);
 	for (size_t i = 0; i < str.length(); i++)
 	{
-		if (!isnumber(str[i]))
+		if (!isdigit(str[i]))
 		{
 			std::cout << "This field can only contain numbers\n";
 			return (false);

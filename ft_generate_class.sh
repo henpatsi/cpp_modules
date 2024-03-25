@@ -3,23 +3,48 @@
 echo "Creating class $1"
 
 set -e
-test -e $1.hpp && (echo "The file exists and will not be overwritten" && exit 1)
+test -e $1.hpp && (echo "The .hpp file exists, exiting" && exit 1)
+test -e $1.cpp && (echo "The .cpp file exists, exiting" && exit 1)
 
 UPPERCASE=$(echo "$1" | awk '{print toupper($0)}')
 
-CLASS="#ifndef ${UPPERCASE}_HPP
+HPP="#ifndef ${UPPERCASE}_HPP
 # define ${UPPERCASE}_HPP
 
 class $1
 {
-	${1}(void);
-	${1}(const ${1}&);
-	~${1}(void);
-	${1} & operator = (const ${1}&);
+	public:
+		${1}(void);
+		${1}(const ${1}&);
+		~${1}(void);
+		${1} & operator = (const ${1}&);
 };
 
 #endif"
 
-echo "$CLASS" > $1.hpp
+CPP="#include \"${1}.hpp\"
+
+${1}::${1}(void)
+{
+
+}
+
+${1}::${1}(const ${1}&)
+{
+
+}
+
+${1}::~${1}(void)
+{
+
+}
+
+${1}::${1} & operator = (const ${1}&)
+{
+
+}"
+
+echo "$HPP" > $1.hpp
+echo "$CPP" > $1.cpp
 
 echo Done

@@ -20,7 +20,7 @@ OBJECTS = $(SOURCES:.cpp=.o)
 
 INCLUDES = $(addsuffix .hpp, $(CLASSES))
 
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror
 
 COMP = g++
 

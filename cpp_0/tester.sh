@@ -12,18 +12,16 @@ YELLOW='\033[0;33m'
 HEADER_COLOR=$LCYAN
 INPUT_COLOR=$CYAN
 
-make -C ex00 re
-make -C ex01 re
-make -C ex02 re
+make -C ex00
+make -C ex01
+make -C ex02
 
 EX00=ex00/megaphone
 EX01=ex01/
-EX02=ex02/
+EX02=ex02/tests
 
 TEST_DIR=tests
 EX00_TESTS=$TEST_DIR/ex00
-EX01_TESTS=$TEST_DIR/ex01
-EX02_TESTS=$TEST_DIR/ex02
 
 # EX00 TESTS
 
@@ -36,3 +34,22 @@ do
 	#leaks -q --atExit -- $EX00 $line
 	echo ""
 done < $EX00_TESTS
+
+echo -e ${HEADER_COLOR}"\nEX02 TESTS\n"${NC}
+
+$EX02 | awk '{print $2}' > out1
+cat ex02/19920104_091532.log | awk '{print $2}' > out2
+DIFF=$( diff out1 out2 )
+WC_DIFF=$( diff out1 out2 | wc -l )
+if [ $WC_DIFF -eq 0 ]
+then
+	echo -e ${GREEN}"OK"${NC}
+else
+	echo -e ${RED}"KO"${NC}
+	echo "$DIFF"
+fi
+
+rm -f out1
+rm -f out2
+
+echo ""
