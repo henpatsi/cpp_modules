@@ -29,18 +29,21 @@ int	main(int argc, char *argv[])
 
 	std::string line;
 	size_t	pos;
-	while (infile)
+	while (infile.good())
 	{
 		std::getline(infile, line);
+		if ((infile.rdstate() & std::ios_base::badbit) != 0)
+			return_error("Read failed");
 		pos = line.find(s1);
-		if (pos != std::string::npos)
+		while (pos != std::string::npos)
 		{
 			line.erase(pos, s1.length());
 			line.insert(pos, s2);
+			pos = line.find(s1, pos + s2.length());
 		}
-		outfile << line << "\n";
+		if ((infile.rdstate() & std::ios_base::eofbit) != 0)
+			outfile << line;
+		else
+			outfile << line << "\n";
 	}
-
-	infile.close();
-	outfile.close();
 }
