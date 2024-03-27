@@ -4,10 +4,19 @@
 
 void	Harl::complain( std::string level )
 {
-	(void) level;
+	typedef void (Harl::*fptr)(void);
+	std::string	level_strings[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	fptr fptrs[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-	fptr f = &Harl::debug;
-	(this->*f)();
+	int i;
+	for (i = 0; i < 4; i++)
+	{
+		if (level_strings[i] == level)
+			break;
+	}
+	if (i >= 4)
+		return ;
+	(this->*fptrs[i])();
 }
 
 // PRIVATE

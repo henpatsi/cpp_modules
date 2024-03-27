@@ -7,8 +7,6 @@
 class Harl
 {
 	public:
-		typedef void (Harl::*fptr)(void);
-		
 		void	complain( std::string level );
 
 	private:
