@@ -14,35 +14,45 @@ HPP="#ifndef ${UPPERCASE}_HPP
 class $1
 {
 	public:
-		${1}(void);
-		${1}(const ${1}&);
-		~${1}(void);
-		${1} & operator = (const ${1}&);
+		${1}( void );
+		${1}( const ${1}& );
+		~${1}( void );
+		${1}& operator=( const ${1}& );
 };
 
 #endif"
 
 CPP="#include \"${1}.hpp\"
 
+// CONSTRUCTOR
+
 ${1}::${1}(void)
 {
 
 }
 
-${1}::${1}(const ${1}&)
+// COPY
+
+${1}::${1}(const ${1}& from)
 {
 
 }
+
+// DESTRUCTOR
 
 ${1}::~${1}(void)
 {
 
 }
 
-${1}::${1} & operator = (const ${1}&)
+// OPERATOR
+
+${1}& ${1}::operator=(const ${1}& from)
 {
 
-}"
+}
+
+// MEMBER FUNCTIONS"
 
 echo "$HPP" > $1.hpp
 echo "$CPP" > $1.cpp
