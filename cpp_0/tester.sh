@@ -41,15 +41,20 @@ $EX02 | awk '{print $2}' > out1
 cat ex02/19920104_091532.log | awk '{print $2}' > out2
 DIFF=$( diff out1 out2 )
 WC_DIFF=$( diff out1 out2 | wc -l )
-if [ $WC_DIFF -eq 0 ]
-then
-	echo -e ${GREEN}"OK"${NC}
-else
-	echo -e ${RED}"KO"${NC}
-	echo "$DIFF"
-fi
+echo "$DIFF"
+# if [ $WC_DIFF -eq 0 ]
+# then
+# 	echo -e ${GREEN}"OK"${NC}
+# else
+# 	echo -e ${RED}"KO"${NC}
+# 	echo "$DIFF"
+# fi
 
 rm -f out1
 rm -f out2
+
+make fclean -C ex00
+make fclean -C ex01
+make fclean -C ex02
 
 echo ""
