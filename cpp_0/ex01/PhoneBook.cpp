@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 10:01:47 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/03/21 12:03:02 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/04/03 10:49:45 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,18 @@ bool	PhoneBook::search_contacts()
 {
 	std::string	input;
 	int			index;
+
+	int current_contact_count = CONTACT_COUNT;
+	for (int i = 0; i < CONTACT_COUNT; i++)
+	{
+		if (this->contacts[i].get_first_name().empty())
+			current_contact_count--;
+	}
+	if (current_contact_count == 0)
+	{
+		std::cout << "No contacts added yet\n";
+		return (true);
+	}
 
 	print_contacts(this->contacts);
 
