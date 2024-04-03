@@ -16,6 +16,23 @@ class Fixed
 		Fixed& operator=( const Fixed& );
 		friend std::ostream& operator<<( std::ostream& out, const Fixed& );
 
+		bool operator>( const Fixed& ) const;
+		bool operator<( const Fixed& ) const;
+		bool operator>=( const Fixed& ) const;
+		bool operator<=( const Fixed& ) const;
+		bool operator==( const Fixed& ) const;
+		bool operator!=( const Fixed& ) const;
+
+		Fixed operator+( const Fixed& ) const;
+		Fixed operator-( const Fixed& ) const;
+		Fixed operator*( const Fixed& ) const;
+		Fixed operator/( const Fixed& ) const;
+
+		Fixed& operator++( void );
+		Fixed operator++( int );
+		Fixed& operator--( void );
+		Fixed operator--( int );
+
 		int		getRawBits( void ) const;
 		void	setRawBits ( int const raw );
 		int		toInt( void ) const;
