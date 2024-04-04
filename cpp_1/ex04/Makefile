@@ -6,7 +6,7 @@
 #    By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 19:32:04 by hpatsi            #+#    #+#              #
-#    Updated: 2024/03/20 13:16:59 by hpatsi           ###   ########.fr        #
+#    Updated: 2024/04/04 09:48:00 by hpatsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,6 @@ NAME = mysed
 SOURCES = main.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
-
-INCLUDES = 
 
 FLAGS = -Wall -Wextra -Werror
 

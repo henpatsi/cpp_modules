@@ -17,6 +17,9 @@ int	main(int argc, char *argv[])
 	std::string s1 = argv[2];
 	std::string s2 = argv[3];
 
+	if (s1.empty())
+		return_error("String to replace cannot be empty");
+
 	std::ifstream infile;
 	infile.open(filename);
 	if (!infile.is_open())
@@ -28,7 +31,7 @@ int	main(int argc, char *argv[])
 		return_error("Failed to open file: " + filename + ".replace");
 
 	std::string line;
-	size_t	pos;
+	size_t		pos;
 	while (infile.good())
 	{
 		std::getline(infile, line);

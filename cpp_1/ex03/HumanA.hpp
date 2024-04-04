@@ -12,10 +12,9 @@ class HumanA
 		HumanA( std::string name, Weapon& weapon );
 
 		void	attack( void );
-		void	setWeapon( Weapon& weapon );
 
 	private:
-		Weapon*		weapon;
+		Weapon&		weapon;
 		std::string	name;
 };
 
