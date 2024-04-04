@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/04 12:57:36 by hpatsi            #+#    #+#             */
+/*   Updated: 2024/04/04 12:57:36 by hpatsi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
@@ -38,6 +50,10 @@ class Fixed
 		int		toInt( void ) const;
 		float	toFloat( void ) const;
 
+		static Fixed& min( Fixed &a, Fixed &b );
+		static const Fixed& min( const Fixed &a, const Fixed &b );
+		static Fixed& max( Fixed &a, Fixed &b );
+		static const Fixed& max( const Fixed &a, const Fixed &b );
 	private:
 		int fixed_point_value;
 		static const int fractional_bits = 8;
