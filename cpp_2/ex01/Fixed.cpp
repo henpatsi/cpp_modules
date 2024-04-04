@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/04 12:57:51 by hpatsi            #+#    #+#             */
+/*   Updated: 2024/04/04 12:57:52 by hpatsi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Fixed.hpp"
 
 // CONSTRUCTOR
@@ -49,13 +61,7 @@ Fixed& Fixed::operator=(const Fixed& from)
 
 std::ostream& operator<<(std::ostream& out, const Fixed& from)
 {
-	int	integral_bits = (sizeof(int) * 8) - from.fractional_bits;
-	int	decimal = from.fixed_point_value << integral_bits;
-
-	if (decimal > 0)
-		out << from.toFloat();
-	else
-		out << from.toInt();
+	out << from.toFloat();
 	return out;
 }
 
