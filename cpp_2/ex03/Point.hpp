@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 12:57:11 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/04/04 15:27:57 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/04/05 09:06:16 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ class Point
 		Point( const Point& );
 		~Point( void );
 		Point& operator=( const Point& );
+
+		bool operator==( const Point& ) const;
 
 		Fixed get_x (void ) const;
 		Fixed get_y (void ) const;

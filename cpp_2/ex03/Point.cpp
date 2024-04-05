@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 12:57:09 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/04/04 15:28:03 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/04/05 09:07:52 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ Point::~Point(void)
 Point& Point::operator=(const Point&)
 {
 	return *this;
+}
+
+bool Point::operator==( const Point& other ) const
+{
+	if (this->x == other.x && this->y == other.y)
+		return (true);
+	return (false);
 }
 
 // MEMBER FUNCTIONS
