@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:50:09 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/04/09 12:07:18 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/04/09 12:37:07 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class WrongAnimal
 	public:
 		WrongAnimal( void );
 		WrongAnimal( const WrongAnimal& );
-		~WrongAnimal( void );
+		virtual ~WrongAnimal( void );
 		WrongAnimal& operator=( const WrongAnimal& );
 
 		void makeSound( void ) const;
