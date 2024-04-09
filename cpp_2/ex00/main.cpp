@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 12:57:59 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/04/04 12:57:59 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/04/09 08:39:23 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ int main( void ) {
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;
+
+	a.setRawBits(42);
+	std::cout << a.getRawBits() << std::endl;
 	
 	return 0;
 }

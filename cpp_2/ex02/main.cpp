@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 12:57:38 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/04/05 10:05:17 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/04/09 09:16:05 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main( void )
 	std::cout << "a++ = " << a++ << std::endl;
 	std::cout << "  a = " << a << std::endl;
 	std::cout << "--a = " << --a << std::endl;
-	std::cout << "  a-- = " << a-- << std::endl;
+	std::cout << "a-- = " << a-- << std::endl;
 	std::cout << "  a = " << a << std::endl;
 	std::cout << "--a = " << --a << std::endl;
 

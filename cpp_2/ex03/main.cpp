@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 12:57:26 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/04/05 09:47:06 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/04/09 09:26:21 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int main( void )
 	const Point point2020(20, 20);
 	std::cout << bsp(a, b, c, point2020) << "\n";
 
-	std::cout << "0, 5, ond edge: ";
-	const Point point05(0, 5);
+	std::cout << "5, 0, ond edge: ";
+	const Point point05(5, 0);
 	std::cout << bsp(a, b, c, point05) << "\n";
 
 	std::cout << "1, 1, ond edge: ";
@@ -76,6 +76,10 @@ int main( void )
 	std::cout << "9, 5, inside: ";
 	const Point point95(9, 5);
 	std::cout << bsp(a, b, c, point95) << "\n";
+
+	std::cout << "9.9, 9.8, inside: ";
+	const Point point9998(9.9, 9.8);
+	std::cout << bsp(a, b, c, point9998) << "\n";
 
 	return 0;
 }

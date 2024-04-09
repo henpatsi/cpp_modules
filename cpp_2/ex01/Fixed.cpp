@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 12:57:51 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/04/04 12:57:52 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/04/09 08:59:47 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ Fixed::Fixed( const int initial_value )
 Fixed::Fixed( const float initial_value )
 {
 	std::cout << "Float constructor called\n";
-
 	float rounded = roundf(initial_value * (1 << this->fractional_bits));
 	this->fixed_point_value = (int) rounded;
 }
