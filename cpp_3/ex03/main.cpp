@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 12:49:51 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/04/08 14:58:51 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/04/09 09:59:21 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ int	main(void)
 	{
 		sue.attack("x");
 	}
+
+	std::cout << "\nTest copy:\n";
+	DiamondTrap a;
+	a = bob;
+	DiamondTrap b(joe);
 
 	std::cout << "\nTest destructors:\n";
 }

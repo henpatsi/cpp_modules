@@ -8,9 +8,9 @@ DiamondTrap::DiamondTrap(void): ClapTrap(), ScavTrap(), FragTrap()
 
 	ClapTrap::name = "generic_clap_name";
 
-	this->hitPoints = FragTrap::hitPoints;
-	this->energyPoints = ScavTrap::energyPoints;
-	this->attackDamage = FragTrap::attackDamage;
+	this->hitPoints = 100;
+	this->energyPoints = 50;
+	this->attackDamage = 30;
 
 	std::cout << "DiamondTrap generic constructed!\n";
 }
@@ -21,32 +21,35 @@ DiamondTrap::DiamondTrap(std::string init_name): ClapTrap(init_name), ScavTrap(i
 
 	ClapTrap::name = init_name + "_clap_name";
 
-	this->hitPoints = FragTrap::hitPoints;
-	this->energyPoints = ScavTrap::energyPoints;
-	this->attackDamage = FragTrap::attackDamage;
+	this->hitPoints = 100;
+	this->energyPoints = 50;
+	this->attackDamage = 30;
 
-	std::cout << "DiamondTrap " << init_name << " constructed!\n";
+	std::cout << "DiamondTrap " << ClapTrap::name << " constructed!\n";
 }
 
 // COPY
 
-DiamondTrap::DiamondTrap(const DiamondTrap& from)
+DiamondTrap::DiamondTrap(const DiamondTrap& from) : ScavTrap(from), FragTrap(from)
 {
-	(void) from;
+	this->ClapTrap::name = from.ClapTrap::name;
+	std::cout << "DiamondTrap " << ClapTrap::name << " copy constructed!\n";
 }
 
 // DESTRUCTOR
 
 DiamondTrap::~DiamondTrap(void)
 {
-	std::cout << "DiamondTrap " << "???" << " destroyed!\n";
+	std::cout << "DiamondTrap " << ClapTrap::name << " destroyed!\n";
 }
 
 // OPERATOR
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& from)
 {
-	(void) from;
+	ClapTrap::operator=(from);
+	this->ClapTrap::name = from.ClapTrap::name;
+	std::cout << "DiamondTrap " << ClapTrap::name << " copy assigned!\n";
 	return *this;
 }
 
