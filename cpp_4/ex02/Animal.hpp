@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:16:50 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/04/09 12:37:17 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/04/10 13:48:23 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Animal
 		virtual ~Animal( void );
 		Animal& operator=( const Animal& );
 
-		virtual void makeSound( void ) const;
+		virtual void makeSound( void ) const = 0;
 		std::string getType( void ) const;
 
 	protected:
