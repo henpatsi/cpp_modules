@@ -6,7 +6,7 @@
 #    By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 19:32:04 by hpatsi            #+#    #+#              #
-#    Updated: 2024/03/20 13:15:55 by hpatsi           ###   ########.fr        #
+#    Updated: 2024/04/11 12:41:06 by hpatsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJECTS = $(SOURCES:.cpp=.o)
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-COMP = g++
+COMP = c++
 
 all: $(NAME)
 

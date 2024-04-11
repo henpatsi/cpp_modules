@@ -6,7 +6,7 @@
 #    By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 19:32:04 by hpatsi            #+#    #+#              #
-#    Updated: 2024/04/02 14:33:09 by hpatsi           ###   ########.fr        #
+#    Updated: 2024/04/11 12:39:54 by hpatsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ INCLUDES = $(addsuffix .hpp, $(CLASSES))
 
 FLAGS = -Wall -Wextra -Werror
 
-COMP = g++
+COMP = c++
 
 all: $(NAME)
 
