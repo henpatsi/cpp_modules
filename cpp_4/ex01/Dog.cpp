@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:16:59 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/04/10 13:08:19 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/04/11 09:27:45 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ Dog::Dog(void): Animal()
 Dog::Dog(const Dog& from): Animal(from)
 {
 	this->brain = new Brain(*from.brain);
+
+	std::cout << "Dog copy constructed\n";
 }
 
 // DESTRUCTOR
@@ -45,9 +47,10 @@ Dog& Dog::operator=(const Dog& from)
 
 	if (this != &from)
 	{
-		std::cout << "ok...\n";
-		this->brain = new Brain(*from.brain);
+		*this->brain = *from.brain;
 	}
+
+	std::cout << "Dog copy assignment\n";
 
 	return *this;
 }

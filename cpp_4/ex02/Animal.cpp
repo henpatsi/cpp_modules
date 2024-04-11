@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:16:55 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/04/10 13:48:19 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/04/11 09:29:20 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ Animal::Animal(void)
 Animal::Animal(const Animal& from)
 {
 	this->type = from.type;
+
+	std::cout << "Animal copy constructed\n";
 }
 
 // DESTRUCTOR
@@ -41,6 +43,9 @@ Animal& Animal::operator=(const Animal& from)
 	{
 		this->type = from.type;
 	}
+
+	std::cout << "Animal copy assignment\n";
+
 	return *this;
 }
 

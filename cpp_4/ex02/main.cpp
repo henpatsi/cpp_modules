@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:17:10 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/04/10 13:48:34 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/04/11 09:40:55 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,23 @@ int main()
 
 	if (1)
 	{
-		std::cout << "\033[36m" << "\nCopy test:\n" << "\033[0m";
-		Dog dog = Dog();
 		std::cout << "\033[32m" << "\nOriginal dog:\n" << "\033[0m";
+		Dog dog = Dog();
+		std::cout << "Ideas:\n";
 		dog.getBrain()->addIdea("great idea!");
 		dog.getBrain()->addIdea("not so great idea!");
 		dog.getBrain()->printIdeas();
 
 		std::cout << "\033[32m" << "\nCopy construct dog:\n" << "\033[0m";
 		Dog dogCopy = Dog(dog);
+		std::cout << "Ideas (+ wow):\n";
 		dogCopy.getBrain()->addIdea("wow!");
 		dogCopy.getBrain()->printIdeas();
 
 		std::cout << "\033[32m" << "\nCopy equal dog:\n" << "\033[0m";
-		Dog dogCopy2 = dog;
+		Dog dogCopy2;
+		dogCopy2 = dog;
+		std::cout << "Ideas (+ amazing):\n";
 		dogCopy2.getBrain()->addIdea("amazing!");
 		dogCopy2.getBrain()->printIdeas();
 

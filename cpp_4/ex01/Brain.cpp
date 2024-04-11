@@ -13,6 +13,8 @@ Brain::Brain(const Brain& from)
 {
 	for (int i = 0; i < 100; i++)
 		this->ideas[i] = from.ideas[i];
+
+	std::cout << "Brain copy constructed\n";
 }
 
 // DESTRUCTOR
@@ -31,6 +33,9 @@ Brain& Brain::operator=(const Brain& from)
 		for (int i = 0; i < 100; i++)
 			this->ideas[i] = from.ideas[i];
 	}
+
+	std::cout << "Brain copy assignment\n";
+
 	return *this;
 }
 
