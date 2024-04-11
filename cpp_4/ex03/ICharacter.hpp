@@ -1,6 +1,11 @@
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 
+class ICharacter;
+
+# include <string>
+# include "AMateria.hpp"
+
 class ICharacter
 {
 	public:

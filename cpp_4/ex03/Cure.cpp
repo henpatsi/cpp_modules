@@ -8,23 +8,22 @@ Cure::Cure(void) : AMateria("cure")
 
 // COPY
 
-Cure::Cure(const Cure& from)
+Cure::Cure(const Cure& from) : AMateria(from)
 {
-
 }
 
 // DESTRUCTOR
 
 Cure::~Cure(void)
 {
-
 }
 
 // OPERATOR
 
 Cure& Cure::operator=(const Cure& from)
 {
-
+	(void) from;
+	return *this;
 }
 
 // MEMBER FUNCTIONS
@@ -36,5 +35,5 @@ AMateria* Cure::clone() const
 
 void Cure::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at " << target.getName() << "*\n";
+	std::cout << "* heals " << target.getName() << "’s wounds *\n";
 }
