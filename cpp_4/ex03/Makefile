@@ -6,18 +6,18 @@
 #    By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 19:32:04 by hpatsi            #+#    #+#              #
-#    Updated: 2024/04/11 13:11:30 by hpatsi           ###   ########.fr        #
+#    Updated: 2024/04/11 13:51:06 by hpatsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = a.out
 
-CLASSES = AMateria Cure Ice Character
+CLASSES = AMateria Cure Ice Character MateriaSource
 
 SOURCES = $(addsuffix .cpp, $(CLASSES)) main.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
-INCLUDES = $(addsuffix .hpp, $(CLASSES)) ICharacter.hpp
+INCLUDES = $(addsuffix .hpp, $(CLASSES)) ICharacter.hpp IMateriaSource.hpp
 
 FLAGS = -Wall -Wextra -Werror -std=c++11
 

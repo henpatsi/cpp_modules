@@ -27,7 +27,11 @@ Character::Character(const Character& from)
 
 Character::~Character(void)
 {
-
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->inventory[i] != 0)
+			delete(this->inventory[i]);
+	}
 }
 
 // OPERATOR
