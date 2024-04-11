@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 12:49:53 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/04/05 14:29:27 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/04/11 11:08:56 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ ClapTrap::ClapTrap(const ClapTrap& from)
 	this->hitPoints = from.hitPoints;
 	this->energyPoints = from.energyPoints;
 	this->attackDamage = from.attackDamage;
+
 	std::cout << "ClapTrap " << this->name << " copy constructed!\n";
 }
 

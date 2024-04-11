@@ -6,7 +6,7 @@
 #    By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 19:32:04 by hpatsi            #+#    #+#              #
-#    Updated: 2024/04/08 14:49:52 by hpatsi           ###   ########.fr        #
+#    Updated: 2024/04/11 09:01:49 by hpatsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJECTS = $(SOURCES:.cpp=.o)
 
 INCLUDES = $(addsuffix .hpp, $(CLASSES))
 
-FLAGS = -Wall -Wextra -Werror  -Wshadow
+FLAGS = -Wall -Wextra -Werror -Wshadow -std=c++11
 
 COMP = g++
 
