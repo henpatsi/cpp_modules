@@ -17,34 +17,46 @@ int main()
 	src->learnMateria(cure);
 
 
+	// BASIC TESTS
+
+	std::cout << "Basic tests:\n";
 	ICharacter* me = new Character("me");
 	ICharacter* bob = new Character("bob");
 
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
+	me->equip(src->createMateria("ice"));
+	me->equip(src->createMateria("cure"));
 
-	std::cout << "Me 1 (only 2 materia set):\n";
+	std::cout << "Me only 2 materia set:\n";
 	me->use(0, *bob);
 	me->use(1, *bob);
 	me->use(2, *bob);
 	me->use(3, *bob);
 	me->use(4, *bob);
 
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
+	me->equip(src->createMateria("ice"));
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 
-	std::cout << "Me 2 (all 4 materia set):\n";
+	std::cout << "Me all 4 materia set:\n";
 	me->use(0, *bob);
 	me->use(1, *bob);
 	me->use(2, *bob);
 	me->use(3, *bob);
 	me->use(4, *bob);
 
+	me->unequip(3);
+	delete tmp;
+	me->unequip(4);
+	std::cout << "Me 1 unequipped:\n";
+	me->use(0, *bob);
+	me->use(1, *bob);
+	me->use(2, *bob);
+	me->use(3, *bob);
+	me->use(4, *bob);
 
+	// BAD MATERIA SOURCE TESTS
+
+	std::cout << "\nBad materia source tests:\n";
 	IMateriaSource* src_bad = new MateriaSource();
 	// ice does not exist in materia source yet
 	tmp = src_bad->createMateria("ice");
@@ -57,21 +69,53 @@ int main()
 	src_bad->learnMateria(cure);
 	src_bad->learnMateria(ice);
 
-	tmp = src_bad->createMateria("ice");
-	bob->equip(tmp);
-	tmp = src_bad->createMateria("cure");
-	bob->equip(tmp);
-	tmp = src_bad->createMateria("ice");
-	bob->equip(tmp);
-	tmp = src_bad->createMateria("cure");
-	bob->equip(tmp);
+	bob->equip(src_bad->createMateria("ice"));
+	bob->equip(src_bad->createMateria("cure"));
+	bob->equip(src_bad->createMateria("ice"));
+	bob->equip(src_bad->createMateria("cure"));
 
-	std::cout << "Bob 1 (tried to add ice cure ice cure):\n";
+	std::cout << "Bob 1 (tried to add ice cure ice cure from only cure materia source):\n";
 	bob->use(0, *me);
 	bob->use(1, *me);
 	bob->use(2, *me);
 	bob->use(3, *me);
 	bob->use(4, *me);
+
+
+	// COPY TESTS
+
+	std::cout << "\nCopy tests:\n";
+	Character original("A");
+	original.equip(src->createMateria("ice"));
+	original.equip(src->createMateria("cure"));
+	std::cout << "Original materia (ice and cure):\n";
+	original.use(0, *bob);
+	original.use(1, *bob);
+	original.use(2, *bob);
+	original.use(3, *bob);
+
+	Character copy(original);
+	copy.equip(src->createMateria("cure"));
+	std::cout << "Copy construct materia (ice cure cure):\n";
+	copy.use(0, *bob);
+	copy.use(1, *bob);
+	copy.use(2, *bob);
+	copy.use(3, *bob);
+
+	Character copy2;
+	copy2 = original;
+	copy2.equip(src->createMateria("ice"));
+	std::cout << "Copy equals materia (ice cure ice):\n";
+	copy2.use(0, *bob);
+	copy2.use(1, *bob);
+	copy2.use(2, *bob);
+	copy2.use(3, *bob);
+
+	std::cout << "Original materia (ice and cure):\n";
+	original.use(0, *bob);
+	original.use(1, *bob);
+	original.use(2, *bob);
+	original.use(3, *bob);
 
 
 	delete ice;

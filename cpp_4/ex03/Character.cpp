@@ -80,6 +80,8 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
+	if (idx > 3 || idx < 0)
+		return ;
 	if (this->inventory[idx] == 0)
 		return ;
 	this->inventory[idx] = 0;
