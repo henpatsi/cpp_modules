@@ -5,22 +5,24 @@
 Character::Character(void)
 {
 	this->name = "Default";
-	for (int i = 0; i < 4; i++)
-		this->inventory[i] = 0;
 }
 
 Character::Character(std::string name)
 {
 	this->name = name;
-	for (int i = 0; i < 4; i++)
-		this->inventory[i] = 0;
 }
 
 // COPY
 
 Character::Character(const Character& from)
 {
-	(void) from;
+	this->name = from.name;
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (from.inventory[i] != 0)
+			this->inventory[i] = from.inventory[i]->clone();
+	}
 }
 
 // DESTRUCTOR
@@ -38,7 +40,22 @@ Character::~Character(void)
 
 Character& Character::operator=(const Character& from)
 {
-	(void) from;
+	if (this != &from)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			if (this->inventory[i] != 0)
+				delete(this->inventory[i]);
+		}
+
+		for (int i = 0; i < 4; i++)
+		{
+			if (from.inventory[i] != 0)
+				this->inventory[i] = from.inventory[i]->clone();
+			else
+				this->inventory[i] = 0;
+		}
+	}
 	return *this;
 }
 
@@ -63,11 +80,15 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
+	if (this->inventory[idx] == 0)
+		return ;
 	this->inventory[idx] = 0;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
+	if (idx > 3 || idx < 0)
+		return ;
 	if (this->inventory[idx] == 0)
 		return ;
 	this->inventory[idx]->use(target);

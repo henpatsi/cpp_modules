@@ -2,16 +2,18 @@
 
 // CONSTRUCTOR
 
-AMateria::AMateria(std::string const & type)
+AMateria::AMateria( void )
 {
-	this->type = type;
+}
+
+AMateria::AMateria(std::string const & type) : type(type)
+{
 }
 
 // COPY
 
-AMateria::AMateria(const AMateria& from)
+AMateria::AMateria(const AMateria& from)  : type(from.type)
 {
-	this->type = from.type;
 }
 
 // DESTRUCTOR
@@ -22,9 +24,8 @@ AMateria::~AMateria(void)
 
 // OPERATOR
 
-AMateria& AMateria::operator=(const AMateria& from)
+AMateria& AMateria::operator=(const AMateria&)
 {
-	(void) from;
 	return *this;
 }
 
@@ -37,5 +38,4 @@ std::string const & AMateria::getType() const
 
 void AMateria::use( ICharacter& )
 {
-	std::cout << "Materia does not have a type, unable to use\n";
 }

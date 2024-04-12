@@ -20,9 +20,8 @@ Ice::~Ice(void)
 
 // OPERATOR
 
-Ice& Ice::operator=(const Ice& from)
+Ice& Ice::operator=(const Ice&)
 {
-	(void) from;
 	return *this;
 }
 

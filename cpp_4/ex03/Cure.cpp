@@ -20,9 +20,8 @@ Cure::~Cure(void)
 
 // OPERATOR
 
-Cure& Cure::operator=(const Cure& from)
+Cure& Cure::operator=(const Cure&)
 {
-	(void) from;
 	return *this;
 }
 
