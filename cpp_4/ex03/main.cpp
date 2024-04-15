@@ -14,6 +14,7 @@ int main()
 	src->learnMateria(cure);
 	src->learnMateria(ice);
 	src->learnMateria(cure);
+	src->learnMateria(ice);
 
 
 	// BASIC TESTS

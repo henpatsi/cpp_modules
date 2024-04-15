@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:17:10 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/04/11 09:40:55 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/04/15 08:33:00 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ int main()
 	std::cout << "\033[36m" << "\nCat construction:\n" << "\033[0m";
 	for (int i = amount / 2; i < amount; i++)
 		animals[i] = new Cat();
+
+	std::cout << "\033[36m" << "\nSounds:\n" << "\033[0m";
+	for (int i = 0; i < amount; i++)
+		animals[i]->makeSound();
 
 	std::cout << "\033[36m" << "\nDestruction:\n" << "\033[0m";
 	for (int i = 0; i < amount; i++)
