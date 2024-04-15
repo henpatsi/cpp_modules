@@ -7,7 +7,6 @@ int main()
 {
 	AMateria* ice = new Ice();
 	AMateria* cure = new Cure();
-	AMateria* tmp;
 
 	IMateriaSource* src = new MateriaSource();
 	// adds ice cure ice cure to materia source
@@ -23,8 +22,10 @@ int main()
 	ICharacter* me = new Character("me");
 	ICharacter* bob = new Character("bob");
 
-	me->equip(src->createMateria("ice"));
-	me->equip(src->createMateria("cure"));
+	AMateria* tmp0 = src->createMateria("ice");
+	me->equip(tmp0);
+	AMateria* tmp1 = src->createMateria("cure");
+	me->equip(tmp1);
 
 	std::cout << "Me only 2 materia set:\n";
 	me->use(0, *bob);
@@ -33,9 +34,10 @@ int main()
 	me->use(3, *bob);
 	me->use(4, *bob);
 
-	me->equip(src->createMateria("ice"));
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
+	AMateria* tmp2 = src->createMateria("ice");
+	me->equip(tmp2);
+	AMateria* tmp3 = src->createMateria("cure");
+	me->equip(tmp3);
 
 	std::cout << "Me all 4 materia set:\n";
 	me->use(0, *bob);
@@ -44,10 +46,12 @@ int main()
 	me->use(3, *bob);
 	me->use(4, *bob);
 
+	me->unequip(1);
+	delete tmp1;
 	me->unequip(3);
-	delete tmp;
+	delete tmp3;
 	me->unequip(4);
-	std::cout << "Me 1 unequipped:\n";
+	std::cout << "Me index 1 and 3 unequipped:\n";
 	me->use(0, *bob);
 	me->use(1, *bob);
 	me->use(2, *bob);
@@ -59,7 +63,7 @@ int main()
 	std::cout << "\nBad materia source tests:\n";
 	IMateriaSource* src_bad = new MateriaSource();
 	// ice does not exist in materia source yet
-	tmp = src_bad->createMateria("ice");
+	AMateria* tmp = src_bad->createMateria("ice");
 	src_bad->learnMateria(tmp);
 	delete tmp;
 	// does not add last ice
