@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 12:57:36 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/04/04 12:57:36 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/06/10 15:39:21 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ class Fixed
 		~Fixed( void );
 
 		Fixed& operator=( const Fixed& );
-		friend std::ostream& operator<<( std::ostream& out, const Fixed& );
 
 		bool operator>( const Fixed& ) const;
 		bool operator<( const Fixed& ) const;
@@ -58,5 +57,7 @@ class Fixed
 		int fixed_point_value;
 		static const int fractional_bits = 8;
 };
+
+std::ostream& operator<<( std::ostream& out, const Fixed& );
 
 #endif
