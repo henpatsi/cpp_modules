@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:20:09 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/11 09:36:48 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/06/11 10:44:12 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,19 @@ void Bureaucrat::decrementGrade( void )
 		throw Bureaucrat::GradeTooLowException();
 	else
 		this->grade = new_grade;
+}
+
+void Bureaucrat::signForm( Form& f)
+{
+	try
+	{
+		f.beSigned(*this);
+		std::cout << this->name << " signed " << "\"" << f.getName() << "\"" << "\n";
+	}
+	catch (Form::GradeTooLowException& e)
+	{
+		std::cout << this->name << " couldn't sign " << "\"" << f.getName() << "\"" << " because " << e.what() << "\n";
+	}
 }
 
 // EXCEPTIONS
