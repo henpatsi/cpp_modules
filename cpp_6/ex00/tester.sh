@@ -1,44 +1,23 @@
 #!/bin/bash
 
+# Colors
+NC='\033[0m'
+GREEN='\033[0;32m'
+LGREEN='\033[1;32m'
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+LCYAN='\033[1;36m'
+YELLOW='\033[0;33m'
+
+INPUT_COLOR=$CYAN
+
 make
 
-run_test()
-{
-	echo "./convert $INPUT"
-	./convert $INPUT
+TEST_INPUT_FILE=./test_inputs
+
+while read -r line
+do
+	echo -e ${INPUT_COLOR}echo "./convert $line"${NC}
+	./convert $line
 	echo
-}
-
-INPUT=a
-run_test
-INPUT=42
-run_test
-INPUT=123.123
-run_test
-INPUT=22f
-run_test
-INPUT=nanf
-run_test
-INPUT=-inff
-run_test
-INPUT=+inff
-run_test
-INPUT=nan
-run_test
-INPUT=-inf
-run_test
-INPUT=+inf
-run_test
-
-INPUT=abc
-run_test
-INPUT=abf
-run_test
-INPUT=12.a
-run_test
-INPUT=10ff
-run_test
-INPUT=1a2.0
-run_test
-INPUT=...
-run_test
+done < $TEST_INPUT_FILE

@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 13:17:46 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/12 16:25:08 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/06/13 14:23:13 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,18 @@ int convert_char(std::string input, char& c, int& i, float& f, double& d)
 
 int convert_int(std::string input, char& c, int& i, float& f, double& d)
 {
-	i = std::stoi(input);
-	c = static_cast<char>(i);
-	f = static_cast<float>(i);
-	d = static_cast<double>(i);
+	try
+	{
+		i = std::stoi(input);
+		c = static_cast<char>(i);
+		f = static_cast<float>(i);
+		d = static_cast<double>(i);
+	}
+	catch (std::exception& e)
+	{
+		std::cout << "Not a valid integer\n";
+		return (1);
+	}
 	return (0);
 }
 
@@ -41,7 +49,7 @@ int convert_float(std::string input, char& c, int& i, float& f, double& d)
 	}
 	catch (std::exception& e)
 	{
-		std::cout << "Type could not be identified\n";
+		std::cout << "Not a valid float\n";
 		return (1);
 	}
 	return (0);
@@ -58,7 +66,7 @@ int convert_double(std::string input, char& c, int& i, float& f, double& d)
 	}
 	catch (std::exception& e)
 	{
-		std::cout << "Type could not be identified\n";
+		std::cout << "Not a valid double\n";
 		return (1);
 	}
 	return (0);
@@ -70,7 +78,7 @@ bool	str_is_num(std::string str)
 		return (false);
 	for (size_t i = 0; i < str.length(); i++)
 	{
-		if (!isdigit(str[i]) && !(i == 0 && str[i] == '-'))
+		if (!std::isdigit(str[i]) && !(i == 0 && str[i] == '-'))
 			return (false);
 	}
 	return (true);
@@ -78,24 +86,59 @@ bool	str_is_num(std::string str)
 
 e_type get_type(std::string input)
 {
-	if (input.length() == 1 && !str_is_num(input))
-	{
+	// char
+	if (input.length() == 1 && !std::isdigit(input[0]))
 		return CHAR;
-	}
-	else if (str_is_num(input))
-	{
+
+	// int
+	if (str_is_num(input))
 		return INT;
-	}
-	else if ((input.find(".") != std::string::npos && input.find("f") == std::string::npos)
-			|| input == "-inf" || input == "+inf" || input == "nan")
+	
+	// float
+	// double
+	size_t decimal_index = input.find(".");
+	if (decimal_index != std::string::npos && str_is_num(input.substr(0, decimal_index)))
 	{
-		return DOUBLE;
+		std::string end_substr = input.substr(decimal_index + 1, std::string::npos);
+		if (str_is_num(end_substr))
+			return DOUBLE;
+		if (str_is_num(end_substr.substr(0, end_substr.length() - 1))
+			&& end_substr[end_substr.length() - 1] == 'f')
+			return FLOAT;
 	}
-	else if (input.find("f") != std::string::npos)
-	{
+
+	if (input == "-inff" || input == "+inff" || input == "nanf")
 		return FLOAT;
-	}
+	if (input == "-inf" || input == "+inf" || input == "nan")
+		return DOUBLE;
+
 	return NONE;
+}
+
+void print_conversion(char c, int i, float f, double d)
+{
+	if (d == i)
+		std::cout << std::fixed << std::setprecision(1);
+
+	// char
+	if (d >= 0 && d <= 255 && std::isprint(c))
+		std::cout << "char: '" << c << "'\n";
+	else if (d >= 0 && d <= 255)
+		std::cout << "char: " << "Non displayable\n";
+	else
+		std::cout << "char: " << "impossible\n";
+
+	// int
+	if (d >= std::numeric_limits<int>::min() && d <= std::numeric_limits<int>::max())
+		std::cout << "int: " << i << "\n";
+	else
+		std::cout << "int: " << "impossible\n";
+	
+	// float
+	std::cout << "float: " << f << "f\n";
+	
+	// double
+	std::cout << "double: " << d << "\n";
 }
 
 void ScalarConverter::convert ( std::string input )
@@ -107,37 +150,25 @@ void ScalarConverter::convert ( std::string input )
 
 	switch (get_type(input))
 	{
-	case CHAR:
-		convert_char(input, c, i, f, d);
-		break;
-	case INT:
-		convert_int(input, c, i, f, d);
-		break;
-	case FLOAT:
-		if (convert_float(input, c, i, f, d) != 0)
-			return ;
-		break;
-	case DOUBLE:
-		if (convert_double(input, c, i, f, d) != 0)
-			return ;
-		break;
-	default:
-		std::cout << "Type could not be identified\n";
-		return;
+		case CHAR:
+			convert_char(input, c, i, f, d);
+			break;
+		case INT:
+			if (convert_int(input, c, i, f, d) != 0)
+				return ;
+			break;
+		case FLOAT:
+			if (convert_float(input, c, i, f, d) != 0)
+				return ;
+			break;
+		case DOUBLE:
+			if (convert_double(input, c, i, f, d) != 0)
+				return ;
+			break;
+		default:
+			std::cout << "Type could not be identified\n";
+			return;
 	}
 
-	if (std::isprint(c))
-		std::cout << "char: '" << c << "'\n";
-	else if (!std::isnan(d) && !std::isinf(d))
-		std::cout << "char: " << "Non displayable\n";
-	else
-		std::cout << "char: " << "impossible\n";
-	
-	if (!std::isnan(d) && !std::isinf(d))
-		std::cout << "int: " << i << "\n";
-	else
-		std::cout << "int: " << "impossible\n";
-	
-	std::cout << std::fixed << std::setprecision(1) << "float: " << f << "f\n";
-	std::cout << "double: " << d << "\n";
+	print_conversion(c, i, f, d);
 }

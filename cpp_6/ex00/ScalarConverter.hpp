@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 13:17:47 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/12 16:23:09 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/06/13 12:49:36 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <string>
 # include <iostream>
 # include <iomanip>
-# include <cmath>
+# include <limits>
 
 enum e_type
 {
