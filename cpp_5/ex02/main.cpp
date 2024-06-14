@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:20:13 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/11 12:11:27 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/06/14 07:41:28 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void try_execute_all(Bureaucrat b)
 
 int main()
 {
-	srand(time(NULL));
+	std::srand(time(NULL));
 
 	try_execute_all(Bureaucrat("150", 150));
 

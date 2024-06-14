@@ -6,13 +6,13 @@
 #    By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/13 17:07:00 by hpatsi            #+#    #+#              #
-#    Updated: 2024/06/13 19:02:46 by hpatsi           ###   ########.fr        #
+#    Updated: 2024/06/13 19:02:48 by hpatsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = a.out
 
-CLASSES = Serializer
+CLASSES = Base A B C
 
 SOURCES = $(addsuffix .cpp, $(CLASSES)) main.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
