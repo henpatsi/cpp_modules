@@ -6,9 +6,12 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 08:36:03 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/14 14:41:53 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/06/17 10:53:08 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
 
 template<typename T>
 void swap(T& a, T& b)
@@ -29,3 +32,5 @@ T max(T a, T b)
 {
 	return (a > b) ? a : b;
 }
+
+#endif
