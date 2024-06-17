@@ -6,15 +6,15 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:47:01 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/14 15:10:37 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/06/17 10:46:58 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 template <typename T>
-void iter(T* arr_ptr, int len, void (*func_ptr)(T))
+void iter(T* arr, size_t len, void (func)(T&))
 {
-	for (int i = 0; i < len; i++)
+	for (size_t i = 0; i < len; i++)
 	{
-		(*func_ptr)(arr_ptr[i]);
+		func(arr[i]);
 	}
 }
