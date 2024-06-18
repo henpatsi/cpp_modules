@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 09:10:24 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/18 09:40:38 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/06/18 11:06:33 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,29 @@ int main(int, char**)
 	print_array(copy1);
 	print_array(copy2);
 
+	try
+	{
+		std::cout << ints[10] << "\n";
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << "\n";
+	}
+
+	Array<std::string> strs = Array<std::string>(3);
+	print_array(strs);
+	try
+	{
+		strs[0] = "hello";
+		strs[1] = "it's";
+		strs[2] = "me";
+		strs[3] = "you";
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << "\n";
+	}
+	print_array(strs);
 
 	return 0;
 }

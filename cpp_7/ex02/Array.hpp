@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:51:25 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/18 09:43:44 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/06/18 11:05:04 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,6 @@ Array<T>::Array(unsigned int n)
 {
 	this->ptr = new T[n];
 	this->number_of_elements = n;
-
-	for (size_t i = 0; i < n; i++)
-		this->ptr[i] = 0;
 }
 
 template <typename T>
