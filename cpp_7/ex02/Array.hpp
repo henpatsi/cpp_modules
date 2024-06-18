@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:51:25 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/17 16:29:38 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/06/18 09:43:44 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ class Array
 		size_t	number_of_elements;
 };
 
-// CONSTRUCTION
+// CONSTRUCTORS
 
 template <typename T>
 Array<T>::Array(void)
 {
-	this->ptr = new T[];
+	this->ptr = new T[0];
 	this->number_of_elements = 0;
 }
 
@@ -55,10 +55,13 @@ template <typename T>
 Array<T>::Array(const Array<T>& from)
 {
 	this->ptr = new T[from.number_of_elements];
+	this->number_of_elements = from.number_of_elements;
 
 	for (size_t i = 0; i < from.number_of_elements; i++)
 		this->ptr[i] = from.ptr[i];
 }
+
+// DESTRUCTOR
 
 template <typename T>
 Array<T>::~Array( void )
@@ -73,8 +76,9 @@ Array<T>& Array<T>::operator=( const Array<T>& from )
 {
 	if (this != &from)
 	{
-		delete this->ptr;
+		delete[] this->ptr;
 		this->ptr = new T[from.number_of_elements];
+		this->number_of_elements = from.number_of_elements;
 
 		for (size_t i = 0; i < from.number_of_elements; i++)
 			this->ptr[i] = from.ptr[i];
