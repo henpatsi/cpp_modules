@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:57:38 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/29 16:35:50 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/06/29 18:37:44 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,30 @@
 
 #include "easyfind.hpp"
 
+// class myclass
+// {
+// 	private:
+// 		int x = 1;
+// 		int y = 2;
+// 		int z = 3;
+// };
+
 int main(void)
 {
-	std::vector<int> arr{1, 2, 3, 4, 5};
+	// INT VECTOR TEST
+	std::vector<int> vec{1, 2, 3, 4, 5};
 
-	if (easyfind(arr, 3))
+	if (easyfind(vec, 3))
 		std::cout << "Found 3!\n";
 	else
 		std::cout << "Did not find 3!\n";
 
-	if (easyfind(arr, 8))
+	if (easyfind(vec, 8))
 		std::cout << "Found 8!\n";
 	else
 		std::cout << "Did not find 8!\n";
 	
+	// STRING TEST
 	std::string str = "Hello";
 
 	if (easyfind(str, 'e'))
@@ -41,4 +51,17 @@ int main(void)
 		std::cout << "Found a!\n";
 	else
 		std::cout << "Did not find a!\n";
+
+	// // CUSTOM TYPE TEST
+	// std::vector<myclass> myclass_vec;
+
+	// if (easyfind(myclass_vec, 3))
+	// 	std::cout << "Found 3!\n";
+	// else
+	// 	std::cout << "Did not find 3!\n";
+
+	// if (easyfind(myclass_vec, 8))
+	// 	std::cout << "Found 8!\n";
+	// else
+	// 	std::cout << "Did not find 8!\n";
 }
