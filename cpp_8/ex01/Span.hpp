@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:39:41 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/30 14:05:59 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/06/30 14:55:30 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <vector>
 # include <algorithm>
+# include <iostream>
 
 class Span
 {
@@ -26,8 +27,11 @@ class Span
 		Span& operator=( const Span& );
 
 		void addNumber( int number );
+		void addIteratorRange( std::vector<int>::iterator begin, std::vector<int>::iterator end );
 		unsigned int shortestSpan( void );
 		unsigned int longestSpan ( void );
+
+		void print( void );
 	
 	private:
 		unsigned int maximumSize;

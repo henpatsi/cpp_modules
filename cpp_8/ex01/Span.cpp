@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:39:44 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/30 14:16:53 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/06/30 17:43:50 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,17 @@ void Span::addNumber(int number)
 	this->vec.push_back(number);
 }
 
+void Span::addIteratorRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	if (this->vec.size() + std::distance(begin, end) > this->maximumSize)
+		return ;
+
+	for (std::vector<int>::iterator i = begin; i != end; i++)
+	{
+		this->vec.push_back(*i);
+	}
+}
+
 unsigned int Span::shortestSpan(void)
 {
 	if (this->vec.size() < 2)
@@ -71,17 +82,16 @@ unsigned int Span::shortestSpan(void)
 	std::sort(sorted_vec.begin(), sorted_vec.end());
 
 	unsigned int shortest = std::abs(sorted_vec[0] - sorted_vec[1]);
-	for (std::vector<int>::iterator i = sorted_vec.begin(); i != sorted_vec.end(); i++)
+	for (std::vector<int>::iterator i = sorted_vec.begin() + 1; i != sorted_vec.end(); i++)
 	{
-		if (i == sorted_vec.begin())
-			continue;
-		if (std::abs(*i - *(i - 1)) < shortest)
-			shortest = std::abs(*i - *(i - 1));
+		unsigned int span = std::abs(*i - *(i - 1));
+		if (span < shortest)
+			shortest = span;
 	}
 	return shortest;
 }
 
-unsigned int Span::longestSpan (void)
+unsigned int Span::longestSpan(void)
 {
 	if (this->vec.size() < 2)
 		return 0;
@@ -93,4 +103,14 @@ unsigned int Span::longestSpan (void)
 	max_ptr = std::max_element(this->vec.begin(), this->vec.end());
 
 	return (*max_ptr - *min_ptr);
+}
+
+void Span::print(void)
+{
+	std::cout << "{ ";
+	for (int num : this->vec)
+	{
+		std::cout << num << " ";
+	}
+	std::cout << "}\n";
 }

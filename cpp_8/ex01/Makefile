@@ -6,7 +6,7 @@
 #    By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/12 13:17:41 by hpatsi            #+#    #+#              #
-#    Updated: 2024/06/29 18:40:28 by hpatsi           ###   ########.fr        #
+#    Updated: 2024/06/30 14:24:44 by hpatsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJECTS = $(SOURCES:.cpp=.o)
 
 INCLUDES = $(addsuffix .hpp, $(CLASSES))
 
-FLAGS = -Wall -Wextra -Werror -std=c++11
+FLAGS = -Wall -Wextra -Werror -std=c++11 -g -fsanitize=address
 
 COMP = c++
 
