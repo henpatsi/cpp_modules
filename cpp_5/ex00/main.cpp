@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:20:13 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/10 15:34:12 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/07/09 18:03:27 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,11 @@ int main()
 
 	std::cout << "\nCopy test:\n";
 	Bureaucrat copy = Bureaucrat(one);
-	std::cout << copy << "\n";
+	copy.decrementGrade();
+	std::cout << "Copy: " << copy << "\n";
+	std::cout << "Original: " << one << "\n";
 	copy = onefifty;
-	std::cout << copy << "\n";
+	copy.incrementGrade();
+	std::cout << "Copy: " << copy << "\n";
+	std::cout << "Original: " << onefifty << "\n";
 }
