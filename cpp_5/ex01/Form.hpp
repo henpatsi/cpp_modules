@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 08:57:36 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/11 09:46:04 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/07/09 21:10:39 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ class Form
 
 	private:
 		const std::string	name;
-		bool 				formSigned;
-		const int 			gradeToSign;
+		bool				formSigned;
+		const int			gradeToSign;
 		const int			gradeToExecute;
 };
 

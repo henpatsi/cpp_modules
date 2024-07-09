@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:20:13 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/11 14:57:27 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/07/09 22:03:18 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 int main()
 {
+	std::srand(time(NULL));
+
 	Intern someRandomIntern;
 	AForm* scf;
 	AForm* rrf;
@@ -35,6 +37,7 @@ int main()
 		std::cout << *noform << "\n";
 	
 	Bureaucrat b = Bureaucrat("Henri", 10);
+	std::cout << b << "\n";
 
 	b.signForm(*scf);
 	b.signForm(*rrf);

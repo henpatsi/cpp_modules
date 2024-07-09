@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:20:13 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/07/09 18:18:12 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/07/09 21:18:09 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,9 @@ int main()
 	std::cout << "\nCopy test:\n";
 	Form copy = Form(nine);
 	std::cout << "Copy: " << copy << "\n";
+	std::cout << "Original: " << nine << "\n";
+	Form copy2;
+	copy2 = nine;
+	std::cout << "Copy2: " << copy2 << "\n";
 	std::cout << "Original: " << nine << "\n";
 }
