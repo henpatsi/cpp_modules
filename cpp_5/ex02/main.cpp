@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:20:13 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/14 07:41:28 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/07/09 21:59:02 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int main()
 {
 	std::srand(time(NULL));
 
+	//AForm form = AForm("Illegal Form", 150, 150);
+
 	try_execute_all(Bureaucrat("150", 150));
 
 	try_execute_all(Bureaucrat("140", 140));
@@ -46,4 +48,17 @@ int main()
 
 	try_execute_all(Bureaucrat("20", 20));
 	try_execute_all(Bureaucrat("1", 1));
+
+	// Copy test
+	Bureaucrat b = Bureaucrat("1", 1);
+
+	ShrubberyCreationForm scf = ShrubberyCreationForm("shrubtarget");
+	b.signForm(scf);
+	b.executeForm(scf);
+	ShrubberyCreationForm scf_copy = ShrubberyCreationForm(scf);
+	ShrubberyCreationForm scf_copy2 = scf;
+
+	std::cout << scf << "\n";
+	std::cout << scf_copy << "\n";
+	std::cout << scf_copy2 << "\n";
 }
