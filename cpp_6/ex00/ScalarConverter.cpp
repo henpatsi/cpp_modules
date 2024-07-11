@@ -117,9 +117,6 @@ e_type get_type(std::string input)
 
 void print_conversion(char c, int i, float f, double d)
 {
-	if (d == i)
-		std::cout << std::fixed << std::setprecision(1);
-
 	// char
 	if (d >= 0 && d <= 255 && std::isprint(c))
 		std::cout << "char: '" << c << "'\n";
@@ -135,18 +132,36 @@ void print_conversion(char c, int i, float f, double d)
 		std::cout << "int: " << "impossible\n";
 	
 	// float
-	std::cout << "float: " << f << "f\n";
-	
 	// double
-	std::cout << "double: " << d << "\n";
+	std::cout << std::fixed; // Forces the use of decimal for f and d
+	if (d == i)
+	{
+		std::cout << std::setprecision(1); // Adds .0 to end of float and double if int
+		std::cout << "float: " << f << "f\n";
+		std::cout << "double: " << d << "f\n";
+	}
+	else
+	{
+		std::string fstr = std::to_string(f);
+		fstr.erase(fstr.find_last_not_of('0') + 1, std::string::npos);
+		if (fstr.back() == '.')
+			fstr += '0';
+		std::cout << "float: " << fstr << "f\n";
+		
+		std::string dstr = std::to_string(d);
+		dstr.erase(dstr.find_last_not_of('0') + 1, std::string::npos);
+		if (dstr.back() == '.')
+			dstr += '0';
+		std::cout << "double: " << dstr << "\n";
+	}
 }
 
 void ScalarConverter::convert ( std::string input )
 {
-	char	c = 0;
-	int		i = 0;
-	float	f = 0;
-	double	d = 0;
+	char	c;
+	int		i;
+	float	f;
+	double	d;
 
 	switch (get_type(input))
 	{
