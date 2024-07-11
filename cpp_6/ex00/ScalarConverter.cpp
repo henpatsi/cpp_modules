@@ -143,15 +143,13 @@ void print_conversion(char c, int i, float f, double d)
 	else
 	{
 		std::string fstr = std::to_string(f);
-		fstr.erase(fstr.find_last_not_of('0') + 1, std::string::npos);
-		if (fstr.back() == '.')
-			fstr += '0';
+		if (fstr.back() == '0' && fstr.find_last_not_of('0') != '.')
+			fstr.erase(fstr.find_last_not_of('0') + 1, std::string::npos);
 		std::cout << "float: " << fstr << "f\n";
 		
 		std::string dstr = std::to_string(d);
-		dstr.erase(dstr.find_last_not_of('0') + 1, std::string::npos);
-		if (dstr.back() == '.')
-			dstr += '0';
+		if (dstr.back() == '0' && dstr.find_last_not_of('0') != '.')
+			dstr.erase(dstr.find_last_not_of('0') + 1, std::string::npos);
 		std::cout << "double: " << dstr << "\n";
 	}
 }
