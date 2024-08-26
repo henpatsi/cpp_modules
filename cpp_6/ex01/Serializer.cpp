@@ -28,3 +28,11 @@ Data* Serializer::deserialize(uintptr_t raw)
 	return ptr;
 }
 
+Serializer::Serializer( void ) {}
+Serializer::Serializer( const Serializer& ) {}
+Serializer::~Serializer( void ) {}
+Serializer& Serializer::operator=( const Serializer& from)
+{
+	(void) from;
+	return *this;
+}

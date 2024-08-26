@@ -195,3 +195,12 @@ void ScalarConverter::convert ( std::string input )
 
 	print_conversion(c, i, f, d);
 }
+
+ScalarConverter::ScalarConverter( void ) {}
+ScalarConverter::ScalarConverter( const ScalarConverter& ) {}
+ScalarConverter::~ScalarConverter( void ) {}
+ScalarConverter& ScalarConverter::operator=( const ScalarConverter& from)
+{
+	(void) from;
+	return *this;
+}
