@@ -29,6 +29,12 @@ class Intern
 		Intern& operator=( const Intern& );
 	
 		AForm* makeForm( std::string formName, std::string formTarget );
+
+		class InvalidNameException : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
 };
 
 #endif

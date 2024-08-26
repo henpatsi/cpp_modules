@@ -26,15 +26,21 @@ int main()
 	AForm* ppf;
 	AForm* noform;
 
-	scf = someRandomIntern.makeForm("shrubbery creation", "Carl");
-	std::cout << *scf << "\n";
-	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-	std::cout << *rrf << "\n";
-	ppf = someRandomIntern.makeForm("presidential pardon", "Bob");
-	std::cout << *ppf << "\n";
-	noform = someRandomIntern.makeForm("wrong form name", "Bob");
-	if (noform != nullptr)
+	try
+	{
+		scf = someRandomIntern.makeForm("shrubbery creation", "Carl");
+		std::cout << *scf << "\n";
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		std::cout << *rrf << "\n";
+		ppf = someRandomIntern.makeForm("presidential pardon", "Bob");
+		std::cout << *ppf << "\n";
+		noform = someRandomIntern.makeForm("wrong form name", "Bob");
 		std::cout << *noform << "\n";
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	
 	Bureaucrat b = Bureaucrat("Henri", 10);
 	std::cout << b << "\n";
@@ -50,5 +56,4 @@ int main()
 	delete scf;
 	delete rrf;
 	delete ppf;
-	delete noform;
 }
