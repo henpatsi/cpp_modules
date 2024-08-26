@@ -14,10 +14,12 @@
 # define SERIALIZER_HPP
 
 # include <cstdint>
+# include <string>
 
 struct Data
 {
 	int x;
+	std::string name;
 };
 
 class Serializer

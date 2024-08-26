@@ -18,6 +18,7 @@ int main(void)
 {
 	Data data;
 	data.x = 42;
+	data.name = "henri";
 
 	uintptr_t raw = Serializer::serialize(&data);
 	Data* data_ptr = Serializer::deserialize(raw);
@@ -30,6 +31,7 @@ int main(void)
 
 	std::cout << "original == deserialized: " << (&data == data_ptr ? "True" : "False") << "\n";
 	std::cout << "original.x = " << data.x << ", deserialized.x = " << data_ptr->x << "\n";
+	std::cout << "original.name = " << data.name << ", deserialized.name = " << data_ptr->name << "\n";
 
 	// Serializer s = Serializer(); // Cannot initialize
 }
