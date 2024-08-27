@@ -24,13 +24,13 @@ Base* generate( void )
 	switch (std::rand() % 3)
 	{
 		case 0:
-			//std::cout << "A created\n";
+			std::cout << "A created\n";
 			return new A();
 		case 1:
-			//std::cout << "B created\n";
+			std::cout << "B created\n";
 			return new B();
 		case 2:
-			//std::cout << "C created\n";
+			std::cout << "C created\n";
 			return new C();
 	}
 	return nullptr;
