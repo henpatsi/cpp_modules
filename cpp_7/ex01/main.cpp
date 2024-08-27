@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:46:51 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/17 11:08:06 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/08/27 10:31:30 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,14 @@
 #include "iter.hpp"
 
 template <typename T>
-void print(T var)
+void print(const T var)
 {
 	std::cout << var << "\n";
+}
+
+void printInt(const int &i)
+{
+	std::cout << i << "\n";
 }
 
 void increment(int &i)
@@ -30,9 +35,18 @@ int main(void)
 	int ints[] = {1, 2, 3, 4, 5};
 	std::string strings[] = {"hello", "mom", "amazing", "wow!"};
 
+	std::cout << "\n";
 	iter(ints, 5, print);
+	std::cout << "\n";
+	iter(ints, 5, printInt);
+	std::cout << "\n";
 	iter(strings, 4, print);
 
+	std::cout << "\n";
 	iter(ints, 5, increment);
 	iter(ints, 5, print);
+
+	std::cout << "\n";
+	const int constInts[] = {1, 2, 3, 4, 5};
+	iter(constInts, 5, print);
 }

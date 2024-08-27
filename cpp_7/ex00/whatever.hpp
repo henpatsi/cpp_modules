@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 08:36:03 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/17 10:53:08 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/08/27 10:06:55 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void swap(T& a, T& b)
 }
 
 template<typename T>
-T min(T a, T b)
+const T min(const T a, const T b)
 {
 	return (a < b) ? a : b;
 }
 
 template<typename T>
-T max(T a, T b)
+const T max(const T a, const T b)
 {
 	return (a > b) ? a : b;
 }
