@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hpatsi <hpatsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 08:35:49 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/14 14:42:44 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/08/27 09:57:50 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ int main(void)
 	std::cout << "c = " << c << ", d = " << d << std::endl;
 	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
 	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
-	
+
+	const int x = 10;
+	const int y = 12;
+	std::cout << "x = " << x << ", y = " << y << std::endl;
+	std::cout << "min( x, y ) = " << ::min( x, y ) << std::endl;
+	std::cout << "max( x, y ) = " << ::max( x, y ) << std::endl;
+
 	return 0;
 }
