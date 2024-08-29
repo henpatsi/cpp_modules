@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 09:10:24 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/08/27 11:54:20 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/08/29 09:54:48 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,25 @@ int main(int, char**)
 	print_array(strscopy1);
 	std::cout << "Copy assigned originial strings:\n";
 	print_array(strscopy2);
+
+	// Const array
+
+	const Array<int> constints(copy1);
+	std::cout << "\nConst int array copy constructed from copy 1:\n";
+	print_array(constints);
+	// constints[5] = 100;
+	std::cout << "Index 5 of this array:\n";
+	std::cout << constints[5] << "\n";
+	try
+	{
+		std::cout << "Index 10 of this array:\n";
+		std::cout << constints[10] << "\n";
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	// constints = copy2;
 
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:47:01 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/08/27 10:32:16 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/08/29 09:53:17 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ void iter(const T* arr, const size_t len, void (func)(const T&))
 		func(arr[i]);
 	}
 }
-
 
 #endif

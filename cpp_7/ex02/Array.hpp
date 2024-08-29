@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:51:25 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/08/27 11:55:19 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/08/29 09:47:10 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ class Array
 		~Array( void );
 		
 		Array<T>& operator=( const Array<T>& );
-		T& operator[]( size_t index );
 
-		size_t size( void );
+		T& operator[]( size_t index );
+		T operator[]( size_t index ) const;
+
+		size_t size( void ) const;
 
 	private:
 		T*		ptr;
@@ -94,9 +96,20 @@ T& Array<T>::operator[](size_t index)
 	return this->ptr[index];
 }
 
+template <typename T>
+T Array<T>::operator[](size_t index) const
+{
+	if (index >= this->number_of_elements)
+	{
+		throw std::exception();
+		return *(this->ptr);
+	}
+	return this->ptr[index];
+}
+
 // MEMBER FUNCTIONS
 template <typename T>
-size_t Array<T>::size(void)
+size_t Array<T>::size(void) const
 {
 	return this->number_of_elements;
 }
