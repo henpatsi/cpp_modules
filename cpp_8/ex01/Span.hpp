@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:39:41 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/30 14:55:30 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/08/30 14:48:02 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ class Span
 	private:
 		unsigned int maximumSize;
 		std::vector<int> vec;
-
 };
 
 #endif
