@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:39:44 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/30 17:43:50 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/08/30 12:37:08 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ Span& Span::operator=(const Span& from)
 void Span::addNumber(int number)
 {
 	if (this->vec.size() == this->maximumSize)
-		return ;
+		throw std::runtime_error("Span is already at maximum size");
 
 	this->vec.push_back(number);
 }
@@ -63,7 +63,7 @@ void Span::addNumber(int number)
 void Span::addIteratorRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
 	if (this->vec.size() + std::distance(begin, end) > this->maximumSize)
-		return ;
+		throw std::runtime_error("Range too large to be added to Span");
 
 	for (std::vector<int>::iterator i = begin; i != end; i++)
 	{
@@ -74,7 +74,7 @@ void Span::addIteratorRange(std::vector<int>::iterator begin, std::vector<int>::
 unsigned int Span::shortestSpan(void)
 {
 	if (this->vec.size() < 2)
-		return 0;
+		throw std::runtime_error("Less than two numbers in Span");
 
 	std::vector<int> sorted_vec;
 
@@ -94,7 +94,7 @@ unsigned int Span::shortestSpan(void)
 unsigned int Span::longestSpan(void)
 {
 	if (this->vec.size() < 2)
-		return 0;
+		throw std::runtime_error("Less than two numbers in Span");
 
 	std::vector<int>::iterator min_ptr;
 	std::vector<int>::iterator max_ptr;
