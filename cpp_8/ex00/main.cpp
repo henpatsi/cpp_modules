@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:57:38 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/06/29 18:37:44 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/08/30 10:04:53 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int main(void)
 	// INT VECTOR TEST
 	std::vector<int> vec{1, 2, 3, 4, 5};
 
-	if (easyfind(vec, 3))
+	if (easyfind(vec, 3) != vec.end())
 		std::cout << "Found 3!\n";
 	else
 		std::cout << "Did not find 3!\n";
 
-	if (easyfind(vec, 8))
+	if (easyfind(vec, 8) != vec.end())
 		std::cout << "Found 8!\n";
 	else
 		std::cout << "Did not find 8!\n";
@@ -42,15 +42,15 @@ int main(void)
 	// STRING TEST
 	std::string str = "Hello";
 
-	if (easyfind(str, 'e'))
-		std::cout << "Found e!\n";
+	if (easyfind(str, 'H') != str.end())
+		std::cout << "Found 'H'!\n";
 	else
-		std::cout << "Did not find e!\n";
-
-	if (easyfind(str, 'a'))
-		std::cout << "Found a!\n";
+		std::cout << "Did not find 'H'!\n";
+	
+	if (easyfind(str, 'Z') != str.end())
+		std::cout << "Found 'Z'!\n";
 	else
-		std::cout << "Did not find a!\n";
+		std::cout << "Did not find 'Z'!\n";
 
 	// // CUSTOM TYPE TEST
 	// std::vector<myclass> myclass_vec;
