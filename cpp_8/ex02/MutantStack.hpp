@@ -6,9 +6,11 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 14:50:53 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/02 16:23:06 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/02 16:25:13 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include <stack>
 #include <deque>

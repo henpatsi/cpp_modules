@@ -6,7 +6,7 @@
 #    By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/12 13:17:41 by hpatsi            #+#    #+#              #
-#    Updated: 2024/08/30 14:50:43 by hpatsi           ###   ########.fr        #
+#    Updated: 2024/09/02 16:30:08 by hpatsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJECTS = $(SOURCES:.cpp=.o)
 
 INCLUDES = MutantStack.hpp
 
-FLAGS = -Wall -Wextra -Werror -std=c++11 -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -std=c++11
 
 COMP = c++
 
