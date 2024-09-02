@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:39:47 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/02 15:29:55 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/02 16:22:55 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,28 +43,70 @@ int main()
 	mstack.push(0);
 	list.push_back(0);
 
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
-	++it;
-	--it;
-	std::cout << "Printing MutantStack:\n";
-	while (it != ite)
 	{
-		std::cout << *it << std::endl;
+		MutantStack<int>::iterator it = mstack.begin();
+		MutantStack<int>::iterator ite = mstack.end();
 		++it;
+		--it;
+		std::cout << "Printing MutantStack:\n";
+		while (it != ite)
+		{
+			std::cout << *it << std::endl;
+			++it;
+		}
 	}
 
-	std::list<int>::iterator lit = list.begin();
-	std::list<int>::iterator lite = list.end();
-	++lit;
-	--lit;
-	std::cout << "Printing list:\n";
-	while (lit != lite)
 	{
-		std::cout << *lit << std::endl;
+		std::list<int>::iterator lit = list.begin();
+		std::list<int>::iterator lite = list.end();
 		++lit;
+		--lit;
+		std::cout << "Printing list:\n";
+		while (lit != lite)
+		{
+			std::cout << *lit << std::endl;
+			++lit;
+		}
+	}
+
+	{
+		MutantStack<int> x(mstack);
+		std::cout << "Printing MutantStack copy construct:\n";
+		MutantStack<int>::iterator it = x.begin();
+		MutantStack<int>::iterator ite = x.end();
+		mstack.push(42);
+		while (it != ite)
+		{
+			std::cout << *it << std::endl;
+			++it;
+		}
+		mstack.pop();
+	}
+
+	{
+		MutantStack<int> x;
+		x = mstack;
+		std::cout << "Printing MutantStack copy assign:\n";
+		MutantStack<int>::iterator it = x.begin();
+		MutantStack<int>::iterator ite = x.end();
+		mstack.push(42);
+		while (it != ite)
+		{
+			std::cout << *it << std::endl;
+			++it;
+		}
+		mstack.pop();
 	}
 
 	std::stack<int> s(mstack);
+
+	const MutantStack<int> cmstack;
+	// cmstack.push(3);
+	// MutantStack<int>::iterator cit = cmstack.begin();
+
+	const std::deque<int> dq;
+	// dq.push_back(3);
+	// std::deque<int>::iterator dit = dq.begin();
+
 	return 0;
 }
