@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 13:00:00 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/03 13:48:38 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/03 20:15:26 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <list>
 
 bool strIsDigit(std::string str);
+void printIntVector(std::vector<int> vector);
+void printIntPairVector(std::vector<std::pair<int, int>> vector);
 
 class PmergeMe
 {
