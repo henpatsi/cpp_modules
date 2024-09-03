@@ -14,10 +14,10 @@ HPP="#ifndef ${UPPERCASE}_HPP
 class $1
 {
 	public:
-		${1}( void );
-		${1}( const ${1}& );
-		~${1}( void );
-		${1}& operator=( const ${1}& );
+		${1}(void);
+		${1}(const ${1}&);
+		~${1}(void);
+		${1}& operator=(const ${1}&);
 };
 
 #endif"
@@ -33,7 +33,7 @@ ${1}::${1}(void)
 
 // COPY
 
-${1}::${1}(const ${1}& from)
+${1}::${1}(const ${1}& other)
 {
 
 }
@@ -47,7 +47,7 @@ ${1}::~${1}(void)
 
 // OPERATOR
 
-${1}& ${1}::operator=(const ${1}& from)
+${1}& ${1}::operator=(const ${1}& other)
 {
 
 }

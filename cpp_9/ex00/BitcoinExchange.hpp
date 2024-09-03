@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 20:37:16 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/03 09:44:41 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/03 11:05:34 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@
 # include <sstream>
 # include <algorithm>
 
+#ifndef BTC_PRICES_DB
 # define BTC_PRICES_DB "data.csv"
+#endif
 
 bool strIsNum(std::string str);
 bool checkDate(std::string dateString);
