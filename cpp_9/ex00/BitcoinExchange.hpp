@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 20:37:16 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/02 23:00:10 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/03 09:44:41 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,8 @@
 
 # define BTC_PRICES_DB "data.csv"
 
-struct Date
-{
-	int day = 0;
-	int month = 0;
-	int year = 0;
-};
-
 bool strIsNum(std::string str);
-bool extractDate(std::string dateString, Date& date);
+bool checkDate(std::string dateString);
 
 class BitcoinExchange
 {
@@ -62,10 +55,12 @@ class BitcoinExchange
 		BitcoinExchange(const BitcoinExchange&) = delete;
 		BitcoinExchange& operator=(const BitcoinExchange&) = delete;
 
-		std::map<std::string, double> m_values {}; // TODO check if double is enough, should use unsigned int and store as cents?
+		std::map<std::string, double> m_exchangeRates {}; // TODO check if double is enough, should use unsigned int and store as cents?
 
 		void parseDataLine(std::string t_line);
 		void parseInputLine(std::string t_line);
+		void printResult(std::string t_dateString, double t_value);
+		std::string findClosestDate(std::string t_dateString);
 };
 
 #endif

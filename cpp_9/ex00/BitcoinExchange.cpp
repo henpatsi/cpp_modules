@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 20:37:13 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/02 23:19:23 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/03 09:55:43 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,20 @@ void BitcoinExchange::parseDataLine(std::string t_line)
 		throw DataFormatException("Empty fields");
 	
 	std::string dateString(start, end);
+	if (!checkDate(dateString))
+		throw DataFormatException("Invalid date");
 
 	start = std::next(end);
 	end = std::find(start, t_line.end(), ',');
 	if (end != t_line.end())
 		throw DataFormatException("Extra fields");
 
-	std::string valueString(start, end);
-	if (!strIsNum(valueString))
-		throw DataFormatException("Value is not a valid number");
-	double value = std::stod(valueString);
+	std::string exchangeRateString(start, end);
+	if (!strIsNum(exchangeRateString))
+		throw DataFormatException("Invalid number");
+	double exchangeRate = std::stod(exchangeRateString);
 
-	m_values[dateString] = value;
+	m_exchangeRates[dateString] = exchangeRate;
 }
 
 void BitcoinExchange::parseInputLine(std::string t_line)
@@ -86,8 +88,7 @@ void BitcoinExchange::parseInputLine(std::string t_line)
 	std::string dateString(start, end);
 	if (dateString.empty())
 		throw InputFormatException("bad input => " + t_line);
-	Date date;
-	if (!extractDate(dateString, date))
+	if (!checkDate(dateString))
 		throw InputFormatException("invalid date");
 
 	start = std::next(end, 3);
@@ -103,8 +104,61 @@ void BitcoinExchange::parseInputLine(std::string t_line)
 		throw InputFormatException("not a positive number");
 	if (value > 1000)
 		throw InputFormatException("too large a number");
+	
+	printResult(dateString, value);
+}
 
-	std::cout << dateString << " => " << valueString << " = " << "x\n";
+void BitcoinExchange::printResult(std::string t_dateString, double t_value)
+{
+	double result = -1;
+
+	if (m_exchangeRates.contains(t_dateString))
+		result = t_value * m_exchangeRates[t_dateString];
+	else
+	{
+		std::string closestDate = findClosestDate(t_dateString);
+		if (closestDate.empty())
+			throw InputFormatException("date does not exist and no ealier entries");
+		result = t_value * m_exchangeRates[closestDate];
+	}
+
+	std::cout << t_dateString << " => " << t_value << " = " << result << "\n";
+}
+
+std::string BitcoinExchange::findClosestDate(std::string t_dateString)
+{
+	std::string closestDate;
+	std::string segment;
+	std::stringstream dateStringStream(t_dateString);
+
+	getline(dateStringStream, segment, '-');
+	int year = std::stoi(segment);
+	getline(dateStringStream, segment, '-');
+	int month = std::stoi(segment);
+	getline(dateStringStream, segment, '-');
+	int day = std::stoi(segment);
+
+	for (; year >= 2009; year--)
+	{
+		for (; month >= 1; month--)
+		{
+			for (; day >= 1; day--)
+			{
+				closestDate = std::to_string(year) + "-" + std::to_string(month) + "-" + std::to_string(day);
+				if (month < 10)
+					closestDate.insert(closestDate.begin() + 5, '0');
+				if (day < 10)
+					closestDate.insert(closestDate.begin() + 8, '0');
+
+				if (m_exchangeRates.contains(closestDate))
+					return closestDate;
+			}
+			day = 31;
+		}
+		month = 12;
+	}
+
+	return ("");
 }
 
 // HELPER FUNCTIONS
@@ -130,11 +184,13 @@ bool strIsNum(std::string str)
 	return true;
 }
 
-bool extractDate(std::string dateString, Date& date)
+bool checkDate(std::string dateString)
 {
 	std::string segment;
 	std::stringstream dateStringStream(dateString);
 	int dateInt;
+	int year;
+	int month;
 
 	for (int i = 0; i < 3; i++)
 	{
@@ -146,25 +202,24 @@ bool extractDate(std::string dateString, Date& date)
 		switch (i)
 		{
 			case 0:
-				if (dateInt < 0 || dateInt > 3000 || segment.length() > 4)
+				if (dateInt < 2009 || segment.length() > 4)
 					return false;
-				date.year = dateInt;
+				year = dateInt;
 				break;
 			case 1:
 				if (dateInt < 1 || dateInt > 12  || segment.length() > 2)
 					return false;
-				date.month = dateInt;
+				month = dateInt;
 				break;
 			case 2:
 				if (dateInt < 1 || dateInt > 31  || segment.length() > 2)
 					return false;
-				if ((date.month == 4 || date.month == 6 || date.month == 9 || date.month == 11) && dateInt > 30)
+				if ((month == 4 || month == 6 || month == 9 || month == 11) && dateInt > 30)
 					return false;
-				if (date.month == 2 && dateInt > 29)
+				if (month == 2 && dateInt > 29)
 					return false;
-				if (date.month == 2 && dateInt > 28 && (date.year % 4 != 0 || (date.year % 100 == 0 && date.year % 400 != 0)))
+				if (month == 2 && dateInt > 28 && (year % 4 != 0 || (year % 100 == 0 && year % 400 != 0)))
 					return false;
-				date.day = dateInt;
 				break;
 		}
 	}
