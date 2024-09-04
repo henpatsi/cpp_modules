@@ -6,15 +6,15 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:39:47 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/08/30 14:47:57 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/04 11:09:26 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-
 #include <stdlib.h>
 #include <time.h>
-
+#include <list>
+#include <vector>
 
 #include "Span.hpp"
 
@@ -80,7 +80,7 @@ int main(void)
 
 		std::vector<int> vec{1, 2, 3, 4, 5};
 		std::cout << "\nAdding iterator range of size 3\n";
-		sp.addIteratorRange(vec.begin(), vec.begin() + 3);
+		sp.addIteratorRange(vec.begin(), std::next(vec.begin(), 3));
 		
 		sp.print();
 
@@ -94,8 +94,9 @@ int main(void)
 
 		try
 		{
+			std::list<int> list{11, 12, 13};
 			std::cout << "\nAdding iterator range of size 3\n";
-			sp.addIteratorRange(vec.begin(), vec.begin() + 3);
+			sp.addIteratorRange(list.begin(), list.end());
 		}
 		catch(const std::exception& e)
 		{

@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:39:44 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/08/30 12:37:08 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/04 11:09:51 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,6 @@ void Span::addNumber(int number)
 		throw std::runtime_error("Span is already at maximum size");
 
 	this->vec.push_back(number);
-}
-
-void Span::addIteratorRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
-{
-	if (this->vec.size() + std::distance(begin, end) > this->maximumSize)
-		throw std::runtime_error("Range too large to be added to Span");
-
-	for (std::vector<int>::iterator i = begin; i != end; i++)
-	{
-		this->vec.push_back(*i);
-	}
 }
 
 unsigned int Span::shortestSpan(void)

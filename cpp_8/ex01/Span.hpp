@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:39:41 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/08/30 14:48:02 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/04 11:08:01 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,18 @@ class Span
 		Span& operator=( const Span& );
 
 		void addNumber( int number );
-		void addIteratorRange( std::vector<int>::iterator begin, std::vector<int>::iterator end );
+		template <typename T>
+		void addIteratorRange( T begin, T end )
+		{
+			if (this->vec.size() + std::distance(begin, end) > this->maximumSize)
+				throw std::runtime_error("Range too large to be added to Span");
+
+			for (T i = begin; i != end; i++)
+			{
+				this->vec.push_back(*i);
+			}
+		}
+
 		unsigned int shortestSpan( void );
 		unsigned int longestSpan ( void );
 
