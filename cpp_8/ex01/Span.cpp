@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:39:44 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/04 11:09:51 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/04 12:06:16 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@
 
 Span::Span(void)
 {
-	this->maximumSize = 0;
+	m_maximumSize = 0;
 }
 
 Span::Span(unsigned int size)
 {
-	this->maximumSize = size;
+	m_maximumSize = size;
 }
 
 // COPY
 
 Span::Span(const Span& from)
 {
-	this->maximumSize = from.maximumSize;
-	this->vec = from.vec;
+	m_maximumSize = from.m_maximumSize;
+	m_vec = from.m_vec;
 }
 
 // DESTRUCTOR
@@ -44,8 +44,8 @@ Span& Span::operator=(const Span& from)
 {
 	if (this != &from)
 	{
-		this->maximumSize = from.maximumSize;
-		this->vec = from.vec;
+		m_maximumSize = from.m_maximumSize;
+		m_vec = from.m_vec;
 	}
 	return *this;
 }
@@ -54,20 +54,20 @@ Span& Span::operator=(const Span& from)
 
 void Span::addNumber(int number)
 {
-	if (this->vec.size() == this->maximumSize)
+	if (m_vec.size() == m_maximumSize)
 		throw std::runtime_error("Span is already at maximum size");
 
-	this->vec.push_back(number);
+	m_vec.push_back(number);
 }
 
 unsigned int Span::shortestSpan(void)
 {
-	if (this->vec.size() < 2)
+	if (m_vec.size() < 2)
 		throw std::runtime_error("Less than two numbers in Span");
 
 	std::vector<int> sorted_vec;
 
-	sorted_vec = this->vec;
+	sorted_vec = m_vec;
 	std::sort(sorted_vec.begin(), sorted_vec.end());
 
 	unsigned int shortest = std::abs(sorted_vec[0] - sorted_vec[1]);
@@ -82,22 +82,18 @@ unsigned int Span::shortestSpan(void)
 
 unsigned int Span::longestSpan(void)
 {
-	if (this->vec.size() < 2)
+	if (m_vec.size() < 2)
 		throw std::runtime_error("Less than two numbers in Span");
 
-	std::vector<int>::iterator min_ptr;
-	std::vector<int>::iterator max_ptr;
+	auto minmax = std::minmax_element(m_vec.begin(), m_vec.end());
 
-	min_ptr = std::min_element(this->vec.begin(), this->vec.end());
-	max_ptr = std::max_element(this->vec.begin(), this->vec.end());
-
-	return (*max_ptr - *min_ptr);
+	return (*minmax.second - *minmax.first);
 }
 
 void Span::print(void)
 {
 	std::cout << "{ ";
-	for (int num : this->vec)
+	for (int num : m_vec)
 	{
 		std::cout << num << " ";
 	}
