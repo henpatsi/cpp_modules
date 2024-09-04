@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 13:00:00 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/03 20:15:26 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/04 08:50:12 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@
 # include <chrono>
 # include <vector>
 # include <list>
+// # include <iterator>
+// # include <algorithm>
 
 bool strIsDigit(std::string str);
-void printIntVector(std::vector<int> vector);
 void printIntPairVector(std::vector<std::pair<int, int>> vector);
+void printIntPairList(std::list<std::pair<int, int>> list);
 
 class PmergeMe
 {
@@ -45,7 +47,8 @@ class PmergeMe
 		std::chrono::microseconds m_vecSortTime;
 		std::chrono::microseconds m_listSortTime;
 
-		void printVector(std::string pretext);
+		void printVector(std::string t_pretext);
+		void printList(std::string t_pretext);
 		void sortVector();
 		void sortList();
 };

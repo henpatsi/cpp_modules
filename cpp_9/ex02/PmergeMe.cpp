@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:59:58 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/03 20:54:20 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/04 09:09:30 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ PmergeMe::PmergeMe(size_t argc, char *argv[])
 	stopTime = std::chrono::high_resolution_clock::now();
 	m_listSortTime = std::chrono::duration_cast<std::chrono::microseconds>(stopTime - startTime);
 
+	for (size_t i = 0; i < m_vec.size(); i++)
+	{
+		if (m_vec[i] != *(std::next(m_list.begin(), i)))
+			throw std::runtime_error("Failed to sort lists");
+	}
+
 	printVector("After:\t");
 
 	std::cout << "Time to process a range of " << m_vec.size() 
@@ -64,14 +70,26 @@ PmergeMe::~PmergeMe(void)
 
 // MEMBER FUNCTIONS
 
-void PmergeMe::printVector(std::string pretext)
+void PmergeMe::printVector(std::string t_pretext)
 {
-	std::cout << pretext;
+	std::cout << t_pretext;
 	for (size_t i = 0; i < m_vec.size(); i++)
 	{
 		if (i != 0)
 			std::cout << " ";
 		std::cout << m_vec[i];
+	}
+	std::cout << "\n";
+}
+
+void PmergeMe::printList(std::string t_pretext)
+{
+	std::cout << t_pretext;
+	for (size_t i = 0; i < m_list.size(); i++)
+	{
+		if (i != 0)
+			std::cout << " ";
+		std::cout << *(std::next(m_list.begin(), i));
 	}
 	std::cout << "\n";
 }
@@ -102,11 +120,10 @@ void PmergeMe::sortVector()
 	if (oddInt != -1)
 		m_vec.push_back(oddInt);
 
-	// std::cout << "pairs:\n";
+	// std::cout << "pairs: ";
 	// printIntPairVector(pairs);
 
-	// std::cout << "m_vec:\n";
-	// printIntVector(m_vec);
+	// printVector("m_vec:\t");
 
 	sortVector();
 
@@ -118,13 +135,53 @@ void PmergeMe::sortVector()
 		m_vec.insert(it, pair.first);
 	}
 
-	// std::cout << "\nm_vec2:\n";
-	// printIntVector(m_vec);
+	// printVector("m_vec sorted:\t");
 }
 
 void PmergeMe::sortList()
 {
-	return ;
+	if (m_list.size() == 1)
+		return ;
+
+	std::list<int>::iterator it = m_list.begin();
+	std::list<std::pair<int, int>> pairs;
+	int oddInt = -1;
+
+	for (size_t i = 0; i + 1 < m_list.size(); i += 2)
+	{
+		pairs.push_back(std::pair<int, int>(*it, *(std::next(it))));
+		it = std::next(it, 2);
+	}
+	if (m_list.size() % 2 == 1)
+		oddInt = m_list.back();
+
+	m_list.clear();
+
+	for (std::pair<int, int>& pair : pairs)
+	{
+		if (pair.second < pair.first)
+			std::swap(pair.first, pair.second);
+		m_list.push_back(pair.second);
+	}
+	if (oddInt != -1)
+		m_list.push_back(oddInt);
+	
+	// std::cout << "pairs: ";
+	// printIntPairList(pairs);
+
+	// printList("m_list:\t");
+	
+	sortList();
+
+	for (std::pair<int, int>& pair : pairs)
+	{
+		it = m_list.begin();
+		while (*it < pair.first)
+			it++;
+		m_list.insert(it, pair.first);
+	}
+
+	// printList("m_list sorted:\t");
 }
 
 
@@ -142,21 +199,8 @@ bool strIsDigit(std::string str)
 	return true;
 }
 
-void printIntVector(std::vector<int> vector)
-{
-	std::cout << "{ ";
-	for (size_t i = 0; i < vector.size(); i++)
-	{
-		if (i != 0)
-			std::cout << " ";
-		std::cout << vector[i];
-	}
-	std::cout << " }\n";
-}
-
 void printIntPairVector(std::vector<std::pair<int, int>> vector)
 {
-	std::cout << "{ ";
 	for (size_t i = 0; i < vector.size(); i++)
 	{
 		if (i != 0)
@@ -164,7 +208,19 @@ void printIntPairVector(std::vector<std::pair<int, int>> vector)
 		std::cout << "(" << vector[i].first << ", " << vector[i].second << ")";
 
 	}
-	std::cout << " }\n";
+	std::cout << "\n";
+}
+
+void printIntPairList(std::list<std::pair<int, int>> list)
+{
+	for (size_t i = 0; i < list.size(); i++)
+	{
+		if (i != 0)
+			std::cout << " ";
+		std::cout << "(" << std::next(list.begin(), i)->first << ", " << std::next(list.begin(), i)->second << ")";
+
+	}
+	std::cout << "\n";
 }
 
 // EXCEPTIONS
