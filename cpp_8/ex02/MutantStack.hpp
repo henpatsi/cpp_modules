@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 14:50:53 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/04 11:29:41 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/04 11:35:19 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class MutantStack : public std::stack<T, Container>
 {
 	public:
 		MutantStack() {};
+		MutantStack(const Container& other) : std::stack<T, Container>(other) {};
 		MutantStack(const MutantStack& other) : std::stack<T, Container>(other) {};
 		~MutantStack() {};
 		MutantStack& operator=(const MutantStack& other) { this->c = other.c; return *this; }

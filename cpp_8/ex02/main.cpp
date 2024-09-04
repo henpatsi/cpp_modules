@@ -6,12 +6,13 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:39:47 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/04 11:33:42 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/04 11:40:48 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <list>
+#include <vector>
 
 #include "MutantStack.hpp"
 
@@ -43,6 +44,8 @@ int main()
 	mstack.push(0);
 	list.push_back(0);
 
+	// MUTANTSTACK PRINT
+
 	{
 		MutantStack<int>::iterator it = mstack.begin();
 		MutantStack<int>::iterator ite = mstack.end();
@@ -56,11 +59,11 @@ int main()
 		}
 	}
 
+	// LIST PRINT
+
 	{
 		std::list<int>::iterator lit = list.begin();
 		std::list<int>::iterator lite = list.end();
-		++lit;
-		--lit;
 		std::cout << "Printing list:\n";
 		while (lit != lite)
 		{
@@ -68,6 +71,8 @@ int main()
 			++lit;
 		}
 	}
+
+	// TEST COPY CONSTRUCT
 
 	{
 		MutantStack<int> x(mstack);
@@ -82,6 +87,8 @@ int main()
 		}
 		mstack.pop();
 	}
+
+	// TEST COPY ASSIGNMENT
 
 	{
 		MutantStack<int> x;
@@ -100,16 +107,12 @@ int main()
 
 	std::stack<int> s(mstack);
 
-	const MutantStack<int> cmstack;
-	// cmstack.push(3);
-	// MutantStack<int>::iterator cit = cmstack.begin();
-
-	const std::deque<int> dq;
-	// dq.push_back(3);
-	// std::deque<int>::iterator dit = dq.begin();
+	// TEST CONST AND OTHER ITERATORS
 
 	{
 		const MutantStack<int> cmstack(mstack);
+		// cmstack.push(3);
+		// MutantStack<int>::iterator cit = cmstack.begin();
 
 		MutantStack<int>::const_iterator it = cmstack.begin();
 		MutantStack<int>::const_iterator ite = cmstack.end();
@@ -127,6 +130,24 @@ int main()
 		{
 			std::cout << *rit << std::endl;
 			++rit;
+		}
+	}
+
+	// TEST CONSTRUCT FROM OTHER CONTAINER
+
+	{
+		std::vector<int> vec = {1, 2, 3, 4, 5};
+		
+		std::list<int, std::vector<int>> stack(vec);
+		MutantStack<int, std::vector<int>> vmstack(vec);
+
+		MutantStack<int, std::vector<int>>::const_iterator it = vmstack.begin();
+		MutantStack<int, std::vector<int>>::const_iterator ite = vmstack.end();
+		std::cout << "Printing vector MutantStack:\n";
+		while (it != ite)
+		{
+			std::cout << *it << std::endl;
+			++it;
 		}
 	}
 
