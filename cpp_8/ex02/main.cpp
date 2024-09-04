@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:39:47 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/02 16:22:55 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/04 11:33:42 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,28 @@ int main()
 	const std::deque<int> dq;
 	// dq.push_back(3);
 	// std::deque<int>::iterator dit = dq.begin();
+
+	{
+		const MutantStack<int> cmstack(mstack);
+
+		MutantStack<int>::const_iterator it = cmstack.begin();
+		MutantStack<int>::const_iterator ite = cmstack.end();
+		std::cout << "Printing const MutantStack:\n";
+		while (it != ite)
+		{
+			std::cout << *it << std::endl;
+			++it;
+		}
+
+		MutantStack<int>::const_reverse_iterator rit = cmstack.rbegin();
+		MutantStack<int>::const_reverse_iterator rite = cmstack.rend();
+		std::cout << "Printing const MutantStack reversed:\n";
+		while (rit != rite)
+		{
+			std::cout << *rit << std::endl;
+			++rit;
+		}
+	}
 
 	return 0;
 }
