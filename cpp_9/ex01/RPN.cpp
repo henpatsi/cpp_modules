@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:25:42 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/03 11:11:47 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/05 15:36:45 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ RPN::~RPN(void)
 
 void RPN::performCalculation(char t_operator)
 {
-	int var1;
-	int var2;
-	int result;
+	double var1;
+	double var2;
+	double result;
 
 	if (m_stack.size() < 2)
 		throw ArgumentException();
