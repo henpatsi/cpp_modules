@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:25:40 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/05 15:36:17 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/18 13:37:13 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@
 # include <iostream>
 # include <sstream>
 # include <algorithm>
-
-#ifndef RPN_OPERATORS
-# define RPN_OPERATORS std::string("+-*/")
-#endif
 
 class RPN
 {
