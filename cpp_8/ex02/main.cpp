@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:39:47 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/04 11:40:48 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/18 09:44:34 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int main()
 	{
 		std::vector<int> vec = {1, 2, 3, 4, 5};
 		
-		std::list<int, std::vector<int>> stack(vec);
+		std::stack<int, std::vector<int>> stack(vec);
 		MutantStack<int, std::vector<int>> vmstack(vec);
 
 		MutantStack<int, std::vector<int>>::const_iterator it = vmstack.begin();

@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 13:00:00 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/04 08:50:12 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/04 11:53:39 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <chrono>
 # include <vector>
 # include <list>
-// # include <iterator>
-// # include <algorithm>
 
 bool strIsDigit(std::string str);
 void printIntPairVector(std::vector<std::pair<int, int>> vector);
