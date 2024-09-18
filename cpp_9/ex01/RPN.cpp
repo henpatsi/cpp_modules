@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:25:42 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/18 13:38:12 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/18 13:40:47 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ RPN::RPN(std::string t_inputString)
 	std::string arg;
 	std::string rpn_operators("+-*/");
 
+	if (t_inputString.empty())
+		throw ArgumentException();
 	while (getline(sstream, arg, ' '))
 	{
 		if (arg.length() != 1)
