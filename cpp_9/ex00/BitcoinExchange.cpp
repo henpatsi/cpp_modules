@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 20:37:13 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/03 09:55:43 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/18 12:47:53 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void BitcoinExchange::printResult(std::string t_dateString, double t_value)
 	{
 		std::string closestDate = findClosestDate(t_dateString);
 		if (closestDate.empty())
-			throw InputFormatException("date does not exist and no ealier entries");
+			throw InputFormatException("date or previous not found");
 		result = t_value * m_exchangeRates[closestDate];
 	}
 
@@ -218,8 +218,13 @@ bool checkDate(std::string dateString)
 					return false;
 				if (month == 2 && dateInt > 29)
 					return false;
-				if (month == 2 && dateInt > 28 && (year % 4 != 0 || (year % 100 == 0 && year % 400 != 0)))
-					return false;
+				if (month == 2 && dateInt > 28)
+				{
+					if (year % 4 != 0)
+						return false;
+					if (year % 100 == 0 && year % 400 != 0)
+						return false;
+				}
 				break;
 		}
 	}
