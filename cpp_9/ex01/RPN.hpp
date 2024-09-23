@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:25:40 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/18 13:37:13 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/23 13:27:31 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ class RPN
 		RPN(const RPN&)  = delete;
 		RPN& operator=(const RPN&)  = delete;
 
-		std::stack<double> m_stack {};
-
 		void performCalculation(char t_operator);
+
+		std::stack<double> m_stack {};
 };
 
 #endif

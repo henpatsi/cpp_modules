@@ -6,11 +6,17 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:59:58 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/04 09:09:30 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/23 13:28:09 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+// HELPER DECLARATIONS
+
+static bool strIsDigit(std::string str);
+static void printIntPairVector(std::vector<std::pair<int, int>> vector);
+static void printIntPairList(std::list<std::pair<int, int>> list);
 
 // CONSTRUCTOR
 

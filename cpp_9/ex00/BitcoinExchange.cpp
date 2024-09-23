@@ -6,18 +6,28 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 20:37:13 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/18 12:47:53 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/23 13:27:07 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
+// HELPER DECLARATION
+
+static bool strIsNum(std::string str);
+static bool checkDate(std::string dateString);
+
 // CONSTRUCTOR
 
 BitcoinExchange::BitcoinExchange(std::string t_inputPath)
 {
-	std::ifstream db(std::string(BTC_PRICES_DB));
+	std::ifstream db(btc_prices_db);
 	std::string line;
+
+	if (!db.good())
+	{
+		throw DataFormatException("data.csv empty or missing");
+	}
 
 	getline(db, line); // Skip header
 	while (getline(db, line))

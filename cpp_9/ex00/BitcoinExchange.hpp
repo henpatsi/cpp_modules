@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 20:37:16 by hpatsi            #+#    #+#             */
-/*   Updated: 2024/09/03 11:05:34 by hpatsi           ###   ########.fr       */
+/*   Updated: 2024/09/23 13:26:44 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,7 @@
 # include <sstream>
 # include <algorithm>
 
-#ifndef BTC_PRICES_DB
-# define BTC_PRICES_DB "data.csv"
-#endif
-
-bool strIsNum(std::string str);
-bool checkDate(std::string dateString);
+const std::string btc_prices_db = "data.csv";
 
 class BitcoinExchange
 {
@@ -57,12 +52,12 @@ class BitcoinExchange
 		BitcoinExchange(const BitcoinExchange&) = delete;
 		BitcoinExchange& operator=(const BitcoinExchange&) = delete;
 
-		std::map<std::string, double> m_exchangeRates {}; // TODO check if double is enough, should use unsigned int and store as cents?
-
 		void parseDataLine(std::string t_line);
 		void parseInputLine(std::string t_line);
 		void printResult(std::string t_dateString, double t_value);
 		std::string findClosestDate(std::string t_dateString);
+
+		std::map<std::string, double> m_exchangeRates {}; // TODO check if double is enough, should use unsigned int and store as cents?
 };
 
 #endif
